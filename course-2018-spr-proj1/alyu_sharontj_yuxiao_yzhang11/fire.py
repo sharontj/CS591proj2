@@ -11,7 +11,7 @@ import csv
 class fire(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = []
-    writes = ['alyu_sharontj_yuxiao_yzhang11.fire']
+    writes = ['alyu_sharontj_yuxiao_yzhang11.fire','alyu_sharontj_yuxiao_yzhang11.fireCount']
 
     @staticmethod
     def execute(trial=True):
@@ -43,6 +43,22 @@ class fire(dml.Algorithm):
         repo['alyu_sharontj_yuxiao_yzhang11.fire'].insert_many(fire2013)
         repo['alyu_sharontj_yuxiao_yzhang11.fire'].insert_many(fire2014)
         repo['alyu_sharontj_yuxiao_yzhang11.fire'].insert_many(fire2015)
+
+        repo.dropCollection("fire_count")
+        repo.createCollection("fire_count")
+        fire = repo['alyu_sharontj_yuxiao_yzhang11.fire']
+        group = {
+            '_id': "$Zip",
+            'count': {'$sum': 1}
+        }
+
+        fireCount = fire.aggregate([
+            {
+                '$group': group
+            }
+        ])
+
+        repo['alyu_sharontj_yuxiao_yzhang11.fire_count'].insert(fireCount)
 
         endTime = datetime.datetime.now()
 
