@@ -4,13 +4,36 @@ import dml
 import prov.model
 import datetime
 import uuid
-from geopy.geocoders import Nominatim
+import csv
+
+def csvConvert():
+    url = "http://datamechanics.io/data/boston_Zip_Zhvi_AllHomes.csv"
+
+    csvfile = urllib.request.urlopen(url).read().decode("utf-8")
+
+    dict_values = []
+
+    entries = csvfile.split('\n')
+    dot_keys = entries[0].split(',')
+    dot_keys[-1] = dot_keys[-1][:-1]
+
+    # keys = [key.replace('.', '_') for key in dot_keys]
+
+    for row in entries[1:-1]:
+        values = row.split(',')
+        values[-1] = values[-1][:-1]
+        dictionary = dict([(dot_keys[i], values[i]) for i in range(len(dot_keys))])
+        dict_values.append(dictionary)
+
+    return dict_values
 
 
-class crime(dml.Algorithm):
-    contributor = 'yuxiao_yzhang11'
+
+
+class houseValue(dml.Algorithm):
+    contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = []
-    writes = ['yuxiao_yzhang11.crime']
+    writes = ['alyu_sharontj_yuxiao_yzhang11.houseValue']
 
     @staticmethod
     def execute(trial=True):
@@ -20,47 +43,15 @@ class crime(dml.Algorithm):
         # Set up the database connection.
         client = dml.pymongo.MongoClient()
         repo = client.repo
-        repo.authenticate('yuxiao_yzhang11', 'yuxiao_yzhang11')
+        repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        url1 = 'http://datamechanics.io/data/20127to20158crimeincident1edit.json'
-        response1 = urllib.request.urlopen(url1).read().decode("utf-8")
-        crime1 = json.loads(response1)
+        dict_values = csvConvert()
 
-        # for i in crime1:
-        #     cor = i['Location'].replace('(', '')
-        #     cor = cor.replace(')', '')
-        #     # print(cor)
-        #     if (cor != "0.0, 0.0"):
-        #         geolocator = Nominatim()
-        #         location = geolocator.reverse(cor, timeout=None)
-        #         try:
-        #             zip = location.raw['address']['postcode']
-        #             i['zip'] = zip
-        #         except KeyError as e:
-        #             print("KeyError at cord: ", cor, ", and zip: ", zip, ", and location: ", location)
+        # dict_values = csvConvert()
 
-        url2 = 'http://datamechanics.io/data/20127to20158crimeincident2.json'
-        response2 = urllib.request.urlopen(url2).read().decode("utf-8")
-        crime2 = json.loads(response2)
-
-        # for i in crime2:
-        #     cor = i['Location'].replace('(', '')
-        #     cor = cor.replace(')', '')
-        #     # print(cor)
-        #     if (cor != "0.0, 0.0"):
-        #         geolocator = Nominatim()
-        #         location = geolocator.reverse(cor, timeout=None)
-        #         try:
-        #             zip = location.raw['address']['postcode']
-        #             i['zip'] = zip
-        #         except KeyError as e:
-        #             print("KeyError at cord: ", cor, ", and zip: ", zip, ", and location: ", location)
-
-        repo.dropCollection("crime")
-        repo.createCollection("crime")
-        repo['yuxiao_yzhang11.crime'].insert_many(crime1)
-        repo['yuxiao_yzhang11.crime'].insert_many(crime2)
-
+        repo.dropCollection("houseValue")
+        repo.createCollection("houseValue")
+        repo['alyu_sharontj_yuxiao_yzhang11.houseValue'].insert_many(dict_values)
 
         endTime = datetime.datetime.now()
 
@@ -77,28 +68,28 @@ class crime(dml.Algorithm):
         # Set up the database connection.
         client = dml.pymongo.MongoClient()
         repo = client.repo
-        repo.authenticate('yuxiao_yzhang11', 'yuxiao_yzhang11')
+        repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
         doc.add_namespace('alg', 'http://datamechanics.io/algorithm/')  # The scripts are in <folder>#<filename> format.
         doc.add_namespace('dat', 'http://datamechanics.io/data/')  # The data sets are in <user>#<collection> format.
         doc.add_namespace('ont',
                           'http://datamechanics.io/ontology#')  # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
         doc.add_namespace('log', 'http://datamechanics.io/log/')  # The event log.
-        # doc.add_namespace('bdp', 'https://data.boston.gov/dataset/eefad66a-e805-4b35-b170-d26e2028c373/resource/ba5ed0e2-e901-438c-b2e0-4acfc3c452b9/download/')
+        doc.add_namespace('bdp', 'http://datamechanics.io/data/')
 
 
-        this_script = doc.agent('alg:yuxiao_yzhang11#crime',
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#houseValue',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
-        resource = doc.entity('dat:20127to20158crimeincident1edit',
+        resource = doc.entity('dat:boston_Zip_Zhvi_AllHomes',
                               {'prov:label': '311, Service Requests', prov.model.PROV_TYPE: 'ont:DataResource',
-                               'ont:Extension': 'json'})
+                               'ont:Extension': 'csv'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
         doc.usage(this_run, resource, startTime, None,
                   {prov.model.PROV_TYPE: 'ont:Retrieval',})
 
-        output =  doc.entity('dat:yuxiao_yzhang11.crime', {prov.model.PROV_LABEL:'Crime', prov.model.PROV_TYPE:'ont:DataSet'})
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.houseValue', {prov.model.PROV_LABEL:'houseValue', prov.model.PROV_TYPE:'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
@@ -134,8 +125,8 @@ class crime(dml.Algorithm):
         return doc
 
 
-crime.execute()
-doc = crime.provenance()
+houseValue.execute()
+doc = houseValue.provenance()
 print(doc.get_provn())
 print(json.dumps(json.loads(doc.serialize()), indent=4))
 

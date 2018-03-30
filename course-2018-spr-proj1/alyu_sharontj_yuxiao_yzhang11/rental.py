@@ -7,7 +7,7 @@ import uuid
 import csv
 
 def csvConvert():
-    url = "http://datamechanics.io/data/boston_Zip_Zhvi_AllHomes.csv"
+    url = "http://datamechanics.io/data/boston_rentalPrice.csv"
 
     csvfile = urllib.request.urlopen(url).read().decode("utf-8")
 
@@ -29,11 +29,10 @@ def csvConvert():
 
 
 
-
-class houseCrime(dml.Algorithm):
-    contributor = 'yuxiao_yzhang11'
+class rental(dml.Algorithm):
+    contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = []
-    writes = ['yuxiao_yzhang11.houseCrime']
+    writes = ['alyu_sharontj_yuxiao_yzhang11.rental']
 
     @staticmethod
     def execute(trial=True):
@@ -43,39 +42,15 @@ class houseCrime(dml.Algorithm):
         # Set up the database connection.
         client = dml.pymongo.MongoClient()
         repo = client.repo
-        repo.authenticate('yuxiao_yzhang11', 'yuxiao_yzhang11')
+        repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
+        dict_values = csvConvert()
 
-        house = repo['yuxiao_yzhang11.houseValue']
+        # dict_values = csvConvert()
 
-
-        match = {
-            "$and": [{"State": "MA"}, {"Metro": "Boston"}]
-        }
-
-        group = {
-            '_id': {"zip:":"$RegionName", 'price': '$2015-02'}
-        }
-
-        houseZip = house.aggregate([
-            { '$match': match },
-            { '$group': group }
-        ])
-
-        # for i in houseZip:
-        #     i['_id'][0] = "0" + i['_id'][0]
-
-        repo.dropCollection("houseZip")
-        repo.createCollection("houseZip")
-        repo['yuxiao_yzhang11.houseZip'].insert_many(houseZip)
-
-        # repo.dropCollection("crimeZip")
-        # repo.createCollection("crimeZip")
-        #
-        #
-        # repo.dropCollection("houseCrime")
-        # repo.createCollection("houseCrime")
-        # repo['yuxiao_yzhang11.houseCrime'].insert_many(dict_values)
+        repo.dropCollection("rental")
+        repo.createCollection("rental")
+        repo['alyu_sharontj_yuxiao_yzhang11.rental'].insert_many(dict_values)
 
         endTime = datetime.datetime.now()
 
@@ -92,34 +67,57 @@ class houseCrime(dml.Algorithm):
         # Set up the database connection.
         client = dml.pymongo.MongoClient()
         repo = client.repo
-        repo.authenticate('yuxiao_yzhang11', 'yuxiao_yzhang11')
+        repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
         doc.add_namespace('alg', 'http://datamechanics.io/algorithm/')  # The scripts are in <folder>#<filename> format.
         doc.add_namespace('dat', 'http://datamechanics.io/data/')  # The data sets are in <user>#<collection> format.
         doc.add_namespace('ont',
                           'http://datamechanics.io/ontology#')  # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
         doc.add_namespace('log', 'http://datamechanics.io/log/')  # The event log.
-        doc.add_namespace('bdp', 'http://datamechanics.io/data/')
+        doc.add_namespace('bdp', 'http://datamechanics.io/data')
 
 
-        this_script = doc.agent('alg:yuxiao_yzhang11#houseCrime',
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#zriRentPrice',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
-        resource = doc.entity('dat:boston_Zip_Zhvi_AllHomes',
-                              {'prov:label': '311, Service Requests', prov.model.PROV_TYPE: 'ont:DataResource',
+        resource = doc.entity('bdp: boston_rentalPrice ',
+                              {'prov:label': 'Boston renting', prov.model.PROV_TYPE: 'ont:DataResource',
                                'ont:Extension': 'csv'})
+
+
+        esource = doc.entity('bdp:wc8w-nujj', {'prov:label':'311, Service Requests', prov.model.PROV_TYPE:'ont:DataResource', 'ont:Extension':'json'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
         doc.usage(this_run, resource, startTime, None,
                   {prov.model.PROV_TYPE: 'ont:Retrieval',})
 
-        output =  doc.entity('dat:yuxiao_yzhang11.houseCrime', {prov.model.PROV_LABEL:'houseCrime', prov.model.PROV_TYPE:'ont:DataSet'})
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.rental', {prov.model.PROV_LABEL:'rental', prov.model.PROV_TYPE:'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
         doc.wasAssociatedWith(this_run, this_script)
         doc.used(this_run, resource, startTime)
+        # doc.wasAssociatedWith(get_lost, this_script)
+        # doc.usage(get_found, resource, startTime, None,
+        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
+        #            'ont:Query': '?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'
+        #            }
+        #           )
+        #
+        # doc.usage(get_lost, resource, startTime, None,
+        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
+        #            'ont:Query': '?type=Animal+Lost&$select=type,latitude,longitude,OPEN_DT'
+        #            }
+        #           )
 
+        # lost = doc.entity('dat:alice_bob#lost',
+        #                   {prov.model.PROV_LABEL: 'Animals Lost', prov.model.PROV_TYPE: 'ont:DataSet'})
+        # doc.wasAttributedTo(lost, this_script)
+        # doc.wasGeneratedBy(lost, get_lost, endTime)
+        # doc.wasDerivedFrom(lost, resource, get_lost, get_lost, get_lost)
+        #
+        # found = doc.entity('dat:alice_bob#found',
+        #                    {prov.model.PROV_LABEL: 'Animals Found', prov.model.PROV_TYPE: 'ont:DataSet'})
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
         doc.wasDerivedFrom(output, resource, this_run, this_run, this_run)
@@ -129,8 +127,8 @@ class houseCrime(dml.Algorithm):
         return doc
 
 
-houseCrime.execute()
-doc = houseCrime.provenance()
+rental.execute()
+doc = rental.provenance()
 print(doc.get_provn())
 print(json.dumps(json.loads(doc.serialize()), indent=4))
 

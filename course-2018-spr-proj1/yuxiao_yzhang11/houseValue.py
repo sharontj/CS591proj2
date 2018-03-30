@@ -36,7 +36,7 @@ class houseValue(dml.Algorithm):
     writes = ['yuxiao_yzhang11.houseValue']
 
     @staticmethod
-    def execute(trial=False):
+    def execute(trial=True):
         '''Retrieve some data sets (not using the API here for the sake of simplicity).'''
         startTime = datetime.datetime.now()
 

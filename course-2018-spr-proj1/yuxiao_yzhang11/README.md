@@ -3,3 +3,5 @@ We use Boston Crime Incident Report to analyze the crime activities in the Bosto
 
 Crime Incident Report contains 260 thousand data. It will take a long time to run.
 
+
+pip install geopy
