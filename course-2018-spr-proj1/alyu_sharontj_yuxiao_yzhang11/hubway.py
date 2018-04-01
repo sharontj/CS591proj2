@@ -7,7 +7,7 @@ import uuid
 import csv
 
 def csvConvert():
-    url = "http://datamechanics.io/data/boston_rentalPrice.csv"
+    url = "http://datamechanics.io/data/hubway_stations.csv"
 
     csvfile = urllib.request.urlopen(url).read().decode("utf-8")
 
@@ -29,10 +29,10 @@ def csvConvert():
 
 
 
-class rental(dml.Algorithm):
+class hubway(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = []
-    writes = ['alyu_sharontj_yuxiao_yzhang11.rental']
+    writes = ['alyu_sharontj_yuxiao_yzhang11.hubway']
 
     @staticmethod
     def execute(trial=True):
@@ -48,9 +48,9 @@ class rental(dml.Algorithm):
 
         # dict_values = csvConvert()
 
-        repo.dropCollection("rental")
-        repo.createCollection("rental")
-        repo['alyu_sharontj_yuxiao_yzhang11.rental'].insert_many(dict_values)
+        repo.dropCollection("hubway")
+        repo.createCollection("hubway")
+        repo['alyu_sharontj_yuxiao_yzhang11.hubway'].insert_many(dict_values)
 
         endTime = datetime.datetime.now()
 
@@ -76,22 +76,20 @@ class rental(dml.Algorithm):
         doc.add_namespace('bdp', 'http://datamechanics.io/data')
 
 
-        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#rental',
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#hubway',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
-        resource = doc.entity('bdp: boston_rentalPrice ',
-                              {'prov:label': 'Boston renting', prov.model.PROV_TYPE: 'ont:DataResource',
+        resource = doc.entity('bdp: hubway_stations',
+                              {'prov:label': 'Boston hubway', prov.model.PROV_TYPE: 'ont:DataResource',
                                'ont:Extension': 'csv'})
 
-
-        esource = doc.entity('bdp:wc8w-nujj', {'prov:label':'311, Service Requests', prov.model.PROV_TYPE:'ont:DataResource', 'ont:Extension':'json'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
         doc.usage(this_run, resource, startTime, None,
                   {prov.model.PROV_TYPE: 'ont:Retrieval',})
 
-        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.rental', {prov.model.PROV_LABEL:'rental', prov.model.PROV_TYPE:'ont:DataSet'})
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.hubway', {prov.model.PROV_LABEL:'hubway', prov.model.PROV_TYPE:'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
@@ -127,8 +125,8 @@ class rental(dml.Algorithm):
         return doc
 
 
-rental.execute()
-doc = rental.provenance()
+hubway.execute()
+doc = hubway.provenance()
 print(doc.get_provn())
 print(json.dumps(json.loads(doc.serialize()), indent=4))
 
