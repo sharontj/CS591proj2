@@ -5,11 +5,13 @@ import prov.model
 import datetime
 import uuid
 import re
-# from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
+from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
+
+
 
 class education_hubway(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
-    reads = ['alyu_sharontj_yuxiao_yzhang11.education, alyu_sharontj_yuxiao_yzhang11.hubway'] #read the data of roads and trafficsignals from mongo
+    reads = ['alyu_sharontj_yuxiao_yzhang11.education', 'alyu_sharontj_yuxiao_yzhang11.hubway'] #read the data of roads and trafficsignals from mongo
     writes = ['alyu_sharontj_yuxiao_yzhang11.education_hubway']
 
 
@@ -22,21 +24,22 @@ class education_hubway(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        repo.dropCollection("education_hubway")
-        repo.createCollection("education_hubway")
 
         '''get (schoolid,zipcode,latitude,longitute) from alyu_sharontj_yuxiao_yzhang11.education'''
-        schoolinfo=[]
-        edudb=repo['alyu_sharontj_yuxiao_yzhang11.education']
-        # cursor = edudb.find()  #filter not work
-        # for info in cursor:
-        #     school_id = info['properties']['SchoolId']
-        #     zipcode = info['properties']['Zipcode']
-        #     Latitude = info['properties']['Latitude']
-        #     Longitude = info['properties']['Longitude']
-        #     schoolinfo.append((school_id, zipcode, Latitude, Longitude))
+        schoolinfo = []
+        edudb = repo['alyu_sharontj_yuxiao_yzhang11.education']
+        educur = edudb.find()  #filter not work
+        for info in educur:
+            school_id = info['properties']['SchoolId']
+            zipcode = info['properties']['Zipcode']
+            Latitude = float(info['properties']['Latitude'])
+            Longitude = float(info['properties']['Longitude'])
+            schoolinfo.append((school_id, zipcode, (Latitude, Longitude)))
+        # print(schoolinfo)
+
 
         hubwaydb = repo['alyu_sharontj_yuxiao_yzhang11.hubway']
+        hubwayinfo = []
         match = {
             'status': "Existing"
         }
@@ -45,59 +48,40 @@ class education_hubway(dml.Algorithm):
                 '$match': match
             }
         ])
+        for info in hubwayExist:
+            hubway_id = info['id']
+            Latitude = float(info['lat'])
+            Longitude = float(info['lng'])
+            hubwayinfo.append((hubway_id,(Latitude,Longitude)))
+        # print(hubwayinfo)
 
-        repo['alyu_sharontj_yuxiao_yzhang11.education_hubway'].insert(hubwayExist)
+        edu_hub = [(s[0],s[1], h[0], distance(s[2], h[1])) for (s, h) in product(schoolinfo, hubwayinfo)]
+        print(len(edu_hub))
 
-        #
-        # validRoadName = select(roadName, lambda t: t[0] != 'NA') #filter unknown road names
-        # #print(len(validRoadName)) #20233
-        # #print(validRoadName)
-        # # print(len(validRoadName))
-        #
-        # '''get (roadname,num_signals) from db.alyu_sharontj.TrafficSignals
-        # '''
-        # Sig_Roadname=[]
-        # sigDb=repo['alyu_sharontj.TrafficSignals']
-        # cursor = sigDb.find()
-        # for info in cursor:
-        #     #print(str(type(info['"FULLNAME"'])))
-        #     fullname = info['properties']['Location']
-        #     fullname = fullname.replace(".", "")
-        #     names = re.split("&|,|@", fullname)
-        #
-        #     for n in names:
-        #         newinfo = (n.strip(), 1)  #store data in the form (('BlueHillAve',1))
-        #         # print(newinfo)
-        #         Sig_Roadname.append(newinfo)
-        #
-        # validSigname = select(Sig_Roadname, lambda t: t[0] != '') #filter unknown road names
-        # sig_num= aggregate(validSigname, sum)
-        # # for i in Road_num:
-        # #     print(i)
-        #
-        # '''combine (roadname,length) with (roadname, num_signals)
-        #     expected output: (roadname, (length, num_signals, density))
-        # '''
-        # def reducer(k, vs):
-        #     rlen = max([len for (len, num) in vs])
-        #     snum = max([num for (len, num) in vs])
-        #     if rlen==0:
-        #         return k, (rlen, snum, 0)
-        #     else:
-        #         return k, (rlen, snum, float(snum)/float(rlen))
-        # x = map(lambda k, v: [(k, (v, 0))], validRoadName)\
-        #     +map(lambda k, v: [(k, (0, v))], sig_num)
-        # result = reduce(reducer, x)
-        #
-        # # for i in result:
-        # #     print(i)
-        # # print(len(result))
-        #
-        # repo.dropCollection("TrafficSignal_Density")
-        # repo.createCollection("TrafficSignal_Density")
-        # for k,v in result:
-        #     oneline={'RoadName': k, 'RoadLength': v[0], 'Signal_num': v[1], 'TrafficSignal_Density': v[2]}
-        #     repo['alyu_sharontj.TrafficSignal_Density'].insert_one(oneline)
+        edu_hub_3 = [ (s,zip,h,dis) for (s,zip,h,dis) in edu_hub if dis<3]
+        print(len(edu_hub_3))
+
+        repo.dropCollection("education_hubway")
+        repo.createCollection("education_hubway")
+        for i in edu_hub_3:
+            single = {'schoolid':i[0], 'zip':i[1], 'dis':i[3]}
+            repo['alyu_sharontj_yuxiao_yzhang11.education_hubway'].insert_one(single)
+
+
+        repo.dropCollection("education_hubway_count")
+        repo.createCollection("education_hubway_count")
+        edu_hubdb = repo['alyu_sharontj_yuxiao_yzhang11.education_hubway']
+        group = {
+            '_id': { "schoolid":"$schoolid", "zip":"$zip" },
+            'hubways': {"$sum": 1}
+        }
+
+        edu_hub_count = edu_hubdb.aggregate([
+            {
+                '$group': group
+            }
+        ])
+        repo['alyu_sharontj_yuxiao_yzhang11.education_hubway_count'].insert(edu_hub_count)
 
 
         endTime = datetime.datetime.now()

@@ -1,3 +1,5 @@
+import math
+
 def union(R, S):
     return R + S
 
@@ -26,3 +28,39 @@ def map(f, R):
 def reduce(f, R):
     keys = {k for (k,v) in R}
     return [f(k1, [v for (k2,v) in R if k1 == k2]) for k1 in keys]
+
+
+def dist(p, q):
+    (x1,y1) = p
+    (x2,y2) = q
+    return (x1-x2)**2 + (y1-y2)**2
+
+def plus(args):
+    p = [0,0]
+    for (x,y) in args:
+        p[0] += x
+        p[1] += y
+    return tuple(p)
+
+def scale(p, c):
+    (x,y) = p
+    return (x/c, y/c)
+
+
+def distance(origin, destination):
+    lat1, lon1 = origin
+    lat2, lon2 = destination
+    radius = 6371 # km
+    # 3959  radius of the great circle in miles...some algorithms use 3956
+    # 6371  radius in kilometers...some algorithms use 6367
+    # 3959 * 5280  radius in feet
+    # 6371 * 1000  radius in meters
+
+    dlat = math.radians(lat2-lat1)
+    dlon = math.radians(lon2-lon1)
+    a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) \
+        * math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    d = radius * c
+
+    return d

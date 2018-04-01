@@ -81,9 +81,9 @@ class education(dml.Algorithm):
 
         return doc
 
-# Education.execute()
-# doc = Education.provenance()
-# print(doc.get_provn())
-# print(json.dumps(json.loads(doc.serialize()), indent=4))
+education.execute()
+doc = education.provenance()
+print(doc.get_provn())
+print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof
