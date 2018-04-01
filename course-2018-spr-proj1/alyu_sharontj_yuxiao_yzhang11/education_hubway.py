@@ -34,7 +34,6 @@ class education_hubway(dml.Algorithm):
             if (school_id != "0"):
                 address = info['properties']['Address']
                 zipcode = address[-5: ]
-                print(zipcode)
                 Latitude = float(info['properties']['Latitude'])
                 Longitude = float(info['properties']['Longitude'])
                 schoolinfo.append((school_id, zipcode, (Latitude, Longitude)))
