@@ -23,10 +23,10 @@ class garden(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        url = 'http://datamechanics.io/data/garden_json.json'
+        url = 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/garden_json.json'
         response_json = urllib.request.urlopen(url).read().decode("utf-8")
-        print("i am here!!!!")
-        print(response_json)
+        #print("i am here!!!!")
+        #print(response_json)
         r = json.loads(response_json)
 
         # url2014 = 'http://datamechanics.io/data/2014fireincident_anabos2.json'
