@@ -20,19 +20,33 @@ class education_hubway(dml.Algorithm):
         '''Set up the database connection.'''
         client = dml.pymongo.MongoClient()
         repo = client.repo
-        repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11') 
+        repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
+
+        repo.dropCollection("education_hubway")
+        repo.createCollection("education_hubway")
 
         '''get (schoolid,zipcode,latitude,longitute) from alyu_sharontj_yuxiao_yzhang11.education'''
         schoolinfo=[]
         edudb=repo['alyu_sharontj_yuxiao_yzhang11.education']
-        cursor = edudb.find()  #filter not work
-        for info in cursor:
-            school_id = info['properties']['SchoolId']
-            zipcode = info['properties']['Zipcode']
-            Latitude = info['properties']['Latitude']
-            Longitude = info['properties']['Longitude']
-            schoolinfo.append((school_id, zipcode, Latitude, Longitude))
+        # cursor = edudb.find()  #filter not work
+        # for info in cursor:
+        #     school_id = info['properties']['SchoolId']
+        #     zipcode = info['properties']['Zipcode']
+        #     Latitude = info['properties']['Latitude']
+        #     Longitude = info['properties']['Longitude']
+        #     schoolinfo.append((school_id, zipcode, Latitude, Longitude))
 
+        hubwaydb = repo['alyu_sharontj_yuxiao_yzhang11.hubway']
+        match = {
+            'status': "Existing"
+        }
+        hubwayExist = hubwaydb.aggregate([
+            {
+                '$match': match
+            }
+        ])
+
+        repo['alyu_sharontj_yuxiao_yzhang11.education_hubway'].insert(hubwayExist)
 
         #
         # validRoadName = select(roadName, lambda t: t[0] != 'NA') #filter unknown road names
@@ -102,42 +116,42 @@ class education_hubway(dml.Algorithm):
         # Set up the database connection.
         client = dml.pymongo.MongoClient()
         repo = client.repo
-        repo.authenticate('alyu_sharontj', 'alyu_sharontj')
+        repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        doc.add_namespace('alg', 'http://datamechanics.io/algorithm/alyu_sharontj') # The scripts are in <folder>#<filename> format.
-        doc.add_namespace('dat', 'http://datamechanics.io/data/alyu_sharontj') # The data sets are in <user>#<collection> format.
+        doc.add_namespace('alg', 'http://datamechanics.io/algorithm/alyu_sharontj_yuxiao_yzhang11') # The scripts are in <folder>#<filename> format.
+        doc.add_namespace('dat', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11') # The data sets are in <user>#<collection> format.
         doc.add_namespace('ont', 'http://datamechanics.io/ontology#') # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
         doc.add_namespace('log', 'http://datamechanics.io/log/') # The event log.
         # doc.add_namespace('bdp', 'http://bostonopendata-boston.opendata.arcgis.com/datasets/')
         # doc.add_namespace('hdv', 'https://dataverse.harvard.edu/dataset.xhtml')
 
-        this_script = doc.agent('alg:alyu_sharontj#TrafficSignal_Density',
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#education_hubway',
             { prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})
 
 
-        road_input = doc.entity('dat:alyu_sharontj.Roads',
-                                {prov.model.PROV_LABEL:'Roads',
+        education_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.education',
+                                {prov.model.PROV_LABEL:'education',
                                  prov.model.PROV_TYPE:'ont:DataSet'})
 
-        signal_input = doc.entity('dat:alyu_sharontj.TrafficSignals',
-                                  {prov.model.PROV_LABEL:'Traffic Signals',
+        hubway_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.hubway',
+                                  {prov.model.PROV_LABEL:'hubway',
                                    prov.model.PROV_TYPE:'ont:DataSet'})
 
         this_run = doc.activity('log:a'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
 
-        output = doc.entity('dat:alyu_sharontj.TrafficSignal_Density',
-            { prov.model.PROV_LABEL:'TrafficSignal_Density', prov.model.PROV_TYPE: 'ont:DataSet'})
+        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.education_hubway',
+            { prov.model.PROV_LABEL:'education_hubway', prov.model.PROV_TYPE: 'ont:DataSet'})
 
 
         doc.wasAssociatedWith(this_run, this_script)
-        doc.used(this_run, road_input, startTime)
-        doc.used(this_run, signal_input, startTime)
+        doc.used(this_run, education_input, startTime)
+        doc.used(this_run, hubway_input, startTime)
 
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
-        doc.wasDerivedFrom(output, road_input, this_run, this_run, this_run)
-        doc.wasDerivedFrom(output, signal_input, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output, education_input, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output, hubway_input, this_run, this_run, this_run)
         repo.logout()
 
 
@@ -145,9 +159,10 @@ class education_hubway(dml.Algorithm):
 
 
 
-# TrafficSignal_Density.execute()
-# doc = TrafficSignal_Density.provenance()
-# print(doc.get_provn())
-# print(json.dumps(json.loads(doc.serialize()), indent=4))
+
+education_hubway.execute()
+doc = education_hubway.provenance()
+print(doc.get_provn())
+print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof

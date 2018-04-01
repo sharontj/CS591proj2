@@ -32,7 +32,7 @@ def csvConvert():
 class hubway(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = []
-    writes = ['alyu_sharontj_yuxiao_yzhang11.hubway','alyu_sharontj_yuxiao_yzhang11.hubway_exist']
+    writes = ['alyu_sharontj_yuxiao_yzhang11.hubway']
 
     @staticmethod
     def execute(trial=False):
@@ -52,20 +52,20 @@ class hubway(dml.Algorithm):
         repo.createCollection("hubway")
         repo['alyu_sharontj_yuxiao_yzhang11.hubway'].insert_many(dict_values)
 
-        repo.dropCollection("hubway_exist")
-        repo.createCollection("hubway_exist")
-        hubway = repo['alyu_sharontj_yuxiao_yzhang11.hubway']
-        match = {
-            'status': "Existing"
-        }
-
-        hubwayExist = hubway.aggregate([
-            {
-                '$match': match
-            }
-        ])
-
-        repo['alyu_sharontj_yuxiao_yzhang11.hubway_exist'].insert(hubwayExist)
+        # repo.dropCollection("hubway_exist")
+        # repo.createCollection("hubway_exist")
+        # hubway = repo['alyu_sharontj_yuxiao_yzhang11.hubway']
+        # match = {
+        #     'status': "Existing"
+        # }
+        #
+        # hubwayExist = hubway.aggregate([
+        #     {
+        #         '$match': match
+        #     }
+        # ])
+        #
+        # repo['alyu_sharontj_yuxiao_yzhang11.hubway_exist'].insert(hubwayExist)
 
         endTime = datetime.datetime.now()
 
