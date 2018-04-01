@@ -14,8 +14,8 @@
       <file leaf-file-name="fire.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/fire.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1207">
-              <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+            <state relative-caret-position="419">
+              <caret line="62" column="41" lean-forward="true" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -23,14 +23,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hubway.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/hubway.py">
+      <file leaf-file-name="education_hubway.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/education_hubway.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1900">
-              <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+            <state relative-caret-position="434">
+              <caret line="33" column="41" lean-forward="true" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hubway.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/hubway.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1456">
+              <caret line="89" column="66" lean-forward="false" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="66" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/Util/Util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -42,6 +64,19 @@
               <caret line="22" column="59" lean-forward="false" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
+                <marker date="1522616033351" expanded="true" signature="157:6266" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="375:2473" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="822:1287" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="1537:1656" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="1694:2355" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="1922:2089" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="1993:2089" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="2574:6266" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="2583:2777" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1522616033351" expanded="true" signature="4025:4145" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="4646:4733" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="4893:5968" ph="..." />
+                <marker date="1522616033351" expanded="true" signature="6268:6416" ph="..." />
               </folding>
             </state>
           </provider>
@@ -54,6 +89,13 @@
               <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
+                <marker date="1522616033353" expanded="true" signature="718:5065" ph="..." />
+                <marker date="1522616033353" expanded="true" signature="886:1553" ph="..." />
+                <marker date="1522616033353" expanded="true" signature="1653:5065" ph="..." />
+                <marker date="1522616033353" expanded="true" signature="1662:1882" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1522616033353" expanded="true" signature="2935:3062" ph="..." />
+                <marker date="1522616033353" expanded="true" signature="3572:3659" ph="..." />
+                <marker date="1522616033353" expanded="true" signature="3769:4844" ph="..." />
               </folding>
             </state>
           </provider>
@@ -66,6 +108,8 @@
       <find>rental_zip_price</find>
       <find>rental</find>
       <find>yuxiao_yzhang11</find>
+      <find>Traffic</find>
+      <find>client</find>
     </findStrings>
     <replaceStrings>
       <replace>alyu_sharontj_yuxiao_yzhang11</replace>
@@ -90,6 +134,7 @@
         <option value="$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/fire.py" />
         <option value="$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/rental.py" />
         <option value="$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/hubway.py" />
+        <option value="$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/education_hubway.py" />
       </list>
     </option>
   </component>
@@ -136,6 +181,12 @@
               <item name="course-2018-spr-proj1" type="b2602c69:ProjectViewProjectNode" />
               <item name="course-2018-spr-proj1" type="462c0819:PsiDirectoryNode" />
               <item name="alyu_sharontj_yuxiao_yzhang11" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="course-2018-spr-proj1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="course-2018-spr-proj1" type="462c0819:PsiDirectoryNode" />
+              <item name="alyu_sharontj_yuxiao_yzhang11" type="462c0819:PsiDirectoryNode" />
+              <item name="Util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="course-2018-spr-proj1" type="b2602c69:ProjectViewProjectNode" />
@@ -232,7 +283,7 @@
         <state relative-caret-position="608">
           <caret line="38" column="26" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -242,7 +293,7 @@
         <state relative-caret-position="646">
           <caret line="41" column="60" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="41" selection-end-column="60" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -252,7 +303,7 @@
         <state relative-caret-position="437">
           <caret line="29" column="24" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -263,6 +314,13 @@
           <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+            <marker date="1522616033353" expanded="true" signature="718:5065" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="886:1553" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="1653:5065" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="1662:1882" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1522616033353" expanded="true" signature="2935:3062" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="3572:3659" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="3769:4844" ph="..." />
           </folding>
         </state>
       </provider>
@@ -282,7 +340,7 @@
         <state relative-caret-position="646">
           <caret line="41" column="60" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="41" selection-end-column="60" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -292,7 +350,7 @@
         <state relative-caret-position="608">
           <caret line="38" column="26" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -302,7 +360,7 @@
         <state relative-caret-position="437">
           <caret line="29" column="24" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -313,6 +371,13 @@
           <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+            <marker date="1522616033353" expanded="true" signature="718:5065" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="886:1553" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="1653:5065" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="1662:1882" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1522616033353" expanded="true" signature="2935:3062" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="3572:3659" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="3769:4844" ph="..." />
           </folding>
         </state>
       </provider>
@@ -332,7 +397,7 @@
         <state relative-caret-position="722">
           <caret line="38" column="26" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -342,7 +407,7 @@
         <state relative-caret-position="779">
           <caret line="41" column="60" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="41" selection-end-column="60" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -352,7 +417,7 @@
         <state relative-caret-position="551">
           <caret line="29" column="24" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -363,6 +428,13 @@
           <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+            <marker date="1522616033353" expanded="true" signature="718:5065" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="886:1553" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="1653:5065" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="1662:1882" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1522616033353" expanded="true" signature="2935:3062" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="3572:3659" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="3769:4844" ph="..." />
           </folding>
         </state>
       </provider>
@@ -404,7 +476,7 @@
         <state relative-caret-position="608">
           <caret line="38" column="26" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -414,7 +486,7 @@
         <state relative-caret-position="437">
           <caret line="29" column="24" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -424,7 +496,7 @@
         <state relative-caret-position="646">
           <caret line="41" column="60" lean-forward="false" selection-start-line="27" selection-start-column="8" selection-end-line="41" selection-end-column="60" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -435,6 +507,19 @@
           <caret line="22" column="59" lean-forward="false" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+            <marker date="1522616033351" expanded="true" signature="157:6266" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="375:2473" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="822:1287" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="1537:1656" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="1694:2355" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="1922:2089" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="1993:2089" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="2574:6266" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="2583:2777" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1522616033351" expanded="true" signature="4025:4145" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="4646:4733" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="4893:5968" ph="..." />
+            <marker date="1522616033351" expanded="true" signature="6268:6416" ph="..." />
           </folding>
         </state>
       </provider>
@@ -445,14 +530,29 @@
           <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+            <marker date="1522616033353" expanded="true" signature="718:5065" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="886:1553" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="1653:5065" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="1662:1882" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1522616033353" expanded="true" signature="2935:3062" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="3572:3659" ph="..." />
+            <marker date="1522616033353" expanded="true" signature="3769:4844" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/Util/Util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/fire.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
-          <caret line="99" column="0" lean-forward="true" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+        <state relative-caret-position="419">
+          <caret line="62" column="41" lean-forward="true" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -461,8 +561,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/hubway.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1900">
-          <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        <state relative-caret-position="1456">
+          <caret line="89" column="66" lean-forward="false" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/alyu_sharontj_yuxiao_yzhang11/education_hubway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="33" column="41" lean-forward="true" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

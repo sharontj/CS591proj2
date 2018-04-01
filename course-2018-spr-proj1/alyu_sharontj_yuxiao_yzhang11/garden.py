@@ -6,36 +6,15 @@ import datetime
 import uuid
 import csv
 
-def csvConvert():
-    url = "http://datamechanics.io/data/hubway_stations.csv"
-
-    csvfile = urllib.request.urlopen(url).read().decode("utf-8")
-
-    dict_values = []
-
-    entries = csvfile.split('\n')
-    dot_keys = entries[0].split(',')
-    dot_keys[-1] = dot_keys[-1][:-1]
-
-    # keys = [key.replace('.', '_') for key in dot_keys]
-
-    for row in entries[1:-1]:
-        values = row.split(',')
-        values[-1] = values[-1][:-1]
-        dictionary = dict([(dot_keys[i], values[i]) for i in range(len(dot_keys))])
-        dict_values.append(dictionary)
-
-    return dict_values
 
 
-
-class hubway(dml.Algorithm):
+class garden(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = []
-    writes = ['alyu_sharontj_yuxiao_yzhang11.hubway']
+    writes = ['alyu_sharontj_yuxiao_yzhang11.garden','alyu_sharontj_yuxiao_yzhang11.garden_count','alyu_sharontj_yuxiao_yzhang11.garden_new_zip' ]
 
     @staticmethod
-    def execute(trial=False):
+    def execute(trial=True):
         '''Retrieve some data sets (not using the API here for the sake of simplicity).'''
         startTime = datetime.datetime.now()
 
@@ -44,28 +23,60 @@ class hubway(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        dict_values = csvConvert()
+        url = 'http://datamechanics.io/data/garden_json.json'
+        response_json = urllib.request.urlopen(url).read().decode("utf-8")
+        print("i am here!!!!")
+        print(response_json)
+        r = json.loads(response_json)
+
+        # url2014 = 'http://datamechanics.io/data/2014fireincident_anabos2.json'
+        # response2014 = urllib.request.urlopen(url2014).read().decode("utf-8")
+        # fire2014 = json.loads(response2014)
+
+        # url2015 = 'http://datamechanics.io/data/2015fireincident_anabos2.json'
+        # response2015 = urllib.request.urlopen(url2015).read().decode("utf-8")
+        # fire2015 = json.loads(response2015)
+
 
         # dict_values = csvConvert()
 
-        repo.dropCollection("hubway")
-        repo.createCollection("hubway")
-        repo['alyu_sharontj_yuxiao_yzhang11.hubway'].insert_many(dict_values)
+        repo.dropCollection("garden")
+        repo.createCollection("garden")
+        repo['alyu_sharontj_yuxiao_yzhang11.garden'].insert_many(r)
 
-        # repo.dropCollection("hubway_exist")
-        # repo.createCollection("hubway_exist")
-        # hubway = repo['alyu_sharontj_yuxiao_yzhang11.hubway']
-        # match = {
-        #     'status': "Existing"
-        # }
-        #
-        # hubwayExist = hubway.aggregate([
-        #     {
-        #         '$match': match
-        #     }
-        # ])
-        #
-        # repo['alyu_sharontj_yuxiao_yzhang11.hubway_exist'].insert(hubwayExist)
+
+        garden = repo['alyu_sharontj_yuxiao_yzhang11.garden'].find()
+
+        repo.dropCollection("garden_new_zip")
+        repo.createCollection("garden_new_zip")
+
+        for i in garden:
+            garden_new_zip = {}
+            old_zip = i["zip_code"]
+            new_zip = "0" + old_zip
+            garden_new_zip["zip"] = new_zip
+            garden_new_zip["location"] = i["location"]
+            garden_new_zip["site"] = i["site"]
+            repo['alyu_sharontj_yuxiao_yzhang11.garden_new_zip'].insert(garden_new_zip)
+
+
+        repo.dropCollection("garden_count")
+        repo.createCollection("garden_count")
+
+        garden_with_new_zip = repo['alyu_sharontj_yuxiao_yzhang11.garden_new_zip']
+
+        group = {
+            '_id': "$zip",
+            'count': {'$sum': 1}
+        }
+
+        gardenCount = garden_with_new_zip.aggregate([
+            {
+                '$group': group
+            }
+        ])
+
+        repo['alyu_sharontj_yuxiao_yzhang11.garden_count'].insert(gardenCount)
 
         endTime = datetime.datetime.now()
 
@@ -88,23 +99,22 @@ class hubway(dml.Algorithm):
         doc.add_namespace('ont',
                           'http://datamechanics.io/ontology#')  # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
         doc.add_namespace('log', 'http://datamechanics.io/log/')  # The event log.
-        doc.add_namespace('bdp', 'http://datamechanics.io/data')
+        doc.add_namespace('bdp', 'https://data.boston.gov/export/767/71c/')
 
 
-        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#hubway',
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#garden',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
-        resource = doc.entity('bdp: hubway_stations',
-                              {'prov:label': 'Boston hubway', prov.model.PROV_TYPE: 'ont:DataResource',
-                               'ont:Extension': 'csv'})
-
+        resource = doc.entity('dat:2013fireincident_anabos2',
+                              {'prov:label': '311, Service Requests', prov.model.PROV_TYPE: 'ont:DataResource',
+                               'ont:Extension': 'json'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
         doc.usage(this_run, resource, startTime, None,
                   {prov.model.PROV_TYPE: 'ont:Retrieval',})
 
-        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.hubway', {prov.model.PROV_LABEL:'hubway', prov.model.PROV_TYPE:'ont:DataSet'})
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden', {prov.model.PROV_LABEL:'garden', prov.model.PROV_TYPE:'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
@@ -140,8 +150,8 @@ class hubway(dml.Algorithm):
         return doc
 
 
-hubway.execute()
-doc = hubway.provenance()
+garden.execute()
+doc = garden.provenance()
 print(doc.get_provn())
 print(json.dumps(json.loads(doc.serialize()), indent=4))
 
