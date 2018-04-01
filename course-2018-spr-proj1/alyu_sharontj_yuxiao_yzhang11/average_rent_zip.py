@@ -14,7 +14,7 @@ class average_rent_zip(dml.Algorithm):
     writes = ['alyu_sharontj_yuxiao_yzhang11.average_rental_zip']
 
     @staticmethod
-    def execute(trial=True):
+    def execute(trial=False):
         '''Retrieve some data sets (not using the API here for the sake of simplicity).'''
         startTime = datetime.datetime.now()
         # Set up the database connection.
