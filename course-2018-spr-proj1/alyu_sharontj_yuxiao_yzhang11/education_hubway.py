@@ -31,10 +31,13 @@ class education_hubway(dml.Algorithm):
         educur = edudb.find()  #filter not work
         for info in educur:
             school_id = info['properties']['SchoolId']
-            zipcode = info['properties']['Zipcode']
-            Latitude = float(info['properties']['Latitude'])
-            Longitude = float(info['properties']['Longitude'])
-            schoolinfo.append((school_id, zipcode, (Latitude, Longitude)))
+            if (school_id != "0"):
+                address = info['properties']['Address']
+                zipcode = address[-5: ]
+                print(zipcode)
+                Latitude = float(info['properties']['Latitude'])
+                Longitude = float(info['properties']['Longitude'])
+                schoolinfo.append((school_id, zipcode, (Latitude, Longitude)))
         # print(schoolinfo)
 
 
