@@ -86,7 +86,7 @@ class education_trans_avg(dml.Algorithm):
         print(len(edu_mbta_1))
 
         edu_mbta_count = aggregate(project(edu_mbta_1, lambda t: (t[0], 1)), sum)
-        # print(edu_mbta_count)
+        print(edu_mbta_count)
 
         select_edu_mbta_hub = select(product(edu_hub_count, edu_mbta_count), lambda t: t[0][0][0]==t[1][0][0])
         edu_hub_mbta = [(h[0][1], h[0][0], h[1]+m[1]) for (h,m) in select_edu_mbta_hub]
@@ -96,11 +96,10 @@ class education_trans_avg(dml.Algorithm):
         # print(zip_edu_trans)
 
         zip_edu_trans_count = aggregate(zip_edu_trans, ADD)
-        # print(zip_edu_trans_count)
+        print(zip_edu_trans_count)
 
         zip_edu_trans_avg = [(z, t[0], t[1]/t[0]) for (z,t)in zip_edu_trans_count]
-        # print(zip_edu_trans_avg)
-
+        print(zip_edu_trans_avg)
 
 
         repo.dropCollection("education_trans_avg")
