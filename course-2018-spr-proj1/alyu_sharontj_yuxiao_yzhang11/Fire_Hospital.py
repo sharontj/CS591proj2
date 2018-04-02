@@ -11,7 +11,7 @@ import csv
 
 class Fire_Hospital(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
-    reads = ['alyu_sharontj_yuxiao_yzhang11.fire_count, alyu_sharontj_yuxiao_yzhang11.hospital']
+    reads = ['alyu_sharontj_yuxiao_yzhang11.fire_count', 'alyu_sharontj_yuxiao_yzhang11.hospital']
     writes = ['alyu_sharontj_yuxiao_yzhang11.Fire_Hospital']
 
     @staticmethod

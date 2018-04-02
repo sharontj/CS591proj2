@@ -13,7 +13,8 @@ class garden_vs_rent(dml.Algorithm):
 
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = ['alyu_sharontj_yuxiao_yzhang11.garden_count','alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
-    writes = ['alyu_sharontj_yuxiao_yzhang11.garden_vs_rent']
+    #writes = ['alyu_sharontj_yuxiao_yzhang11.garden_vs_rent']
+    writes = []
 
     @staticmethod
     def execute(trial=False):
