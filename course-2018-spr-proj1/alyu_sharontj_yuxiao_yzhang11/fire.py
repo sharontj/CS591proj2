@@ -11,7 +11,7 @@ import csv
 class fire(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = []
-    writes = ['alyu_sharontj_yuxiao_yzhang11.fire','alyu_sharontj_yuxiao_yzhang11.fireCount']
+    writes = ['alyu_sharontj_yuxiao_yzhang11.fire','alyu_sharontj_yuxiao_yzhang11.fire_count']
 
     @staticmethod
     def execute(trial=False):
@@ -86,6 +86,8 @@ class fire(dml.Algorithm):
 
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#fire',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
+        this_script2 = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#fire_count',
+                                {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
         resource = doc.entity('dat:2013fireincident_anabos2',
                               {'prov:label': '311, Service Requests', prov.model.PROV_TYPE: 'ont:DataResource',
@@ -101,28 +103,9 @@ class fire(dml.Algorithm):
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
         doc.wasAssociatedWith(this_run, this_script)
+        doc.wasAssociatedWith(this_run, this_script2)
         doc.used(this_run, resource, startTime)
-        # doc.wasAssociatedWith(get_lost, this_script)
-        # doc.usage(get_found, resource, startTime, None,
-        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
-        #            'ont:Query': '?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'
-        #            }
-        #           )
-        #
-        # doc.usage(get_lost, resource, startTime, None,
-        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
-        #            'ont:Query': '?type=Animal+Lost&$select=type,latitude,longitude,OPEN_DT'
-        #            }
-        #           )
 
-        # lost = doc.entity('dat:alice_bob#lost',
-        #                   {prov.model.PROV_LABEL: 'Animals Lost', prov.model.PROV_TYPE: 'ont:DataSet'})
-        # doc.wasAttributedTo(lost, this_script)
-        # doc.wasGeneratedBy(lost, get_lost, endTime)
-        # doc.wasDerivedFrom(lost, resource, get_lost, get_lost, get_lost)
-        #
-        # found = doc.entity('dat:alice_bob#found',
-        #                    {prov.model.PROV_LABEL: 'Animals Found', prov.model.PROV_TYPE: 'ont:DataSet'})
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
         doc.wasDerivedFrom(output, resource, this_run, this_run, this_run)

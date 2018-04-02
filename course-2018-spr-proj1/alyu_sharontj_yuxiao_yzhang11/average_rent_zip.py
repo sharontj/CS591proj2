@@ -11,10 +11,10 @@ import pymongo
 class average_rent_zip(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = ['alyu_sharontj_yuxiao_yzhang11.rental']
-    writes = ['alyu_sharontj_yuxiao_yzhang11.average_rental_zip']
+    writes = ['alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
 
     @staticmethod
-    def execute(trial=False):
+    def execute(trial=True):
         '''Retrieve some data sets (not using the API here for the sake of simplicity).'''
         startTime = datetime.datetime.now()
         # Set up the database connection.
@@ -77,11 +77,11 @@ class average_rent_zip(dml.Algorithm):
             rent_average = rent_sum /12.0   
             rental_zip_price["Average"] = rent_average
             # print("i am here !!!!!")
-            print(rental_zip_price)
+            # print(rental_zip_price)
             repo['alyu_sharontj_yuxiao_yzhang11.average_rent_zip'].insert(rental_zip_price)
 
 
-        repo.logout()
+        # repo.logout()
         endTime = datetime.datetime.now()
         return {"start": startTime, "end": endTime}
 
@@ -102,54 +102,31 @@ class average_rent_zip(dml.Algorithm):
         doc.add_namespace('log', 'http://datamechanics.io/log/')  # The event log.
         doc.add_namespace('bdp', 'https://data.boston.gov/export/767/71c/')
 
-        this_script = doc.agent('alg:yuxiao_yzhang11#fire_rental',
+        this_script = doc.agent('alg:yuxiao_yzhang11#average_rent_zip',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
-        resource1 = doc.entity('dat: yuxiao_yzhang11#fire',
-                               {'prov:label': 'Analyze Boston', prov.model.PROV_TYPE: 'ont:DataResource', 'ont:Extension':'json'})
+
         resource2 = doc.entity('dat:yuxiao_yzhang11#rental',
                                {'prov:label': 'Zillow', prov.model.PROV_TYPE: 'ont:DataResource',
                                 'ont:Extension': 'csv'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
-        doc.usage(this_run, resource1, startTime, None,
-                  {prov.model.PROV_TYPE: 'ont:Retrieval', })
+
         doc.usage(this_run, resource2, startTime, None,
                   {prov.model.PROV_TYPE: 'ont:Retrieval', })
 
-        output = doc.entity('dat:yuxiao_yzhang11.fire_rental',
-                            {prov.model.PROV_LABEL: 'fire_rental', prov.model.PROV_TYPE: 'ont:DataSet'})
+        output = doc.entity('dat:yuxiao_yzhang11.average_rent_zip',
+                            {prov.model.PROV_LABEL: 'average_rent_zip', prov.model.PROV_TYPE: 'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
         doc.wasAssociatedWith(this_run, this_script)
-        doc.used(this_run, resource1, startTime)
         doc.used(this_run, resource2, startTime)
-        # doc.wasAssociatedWith(get_lost, this_script)
-        # doc.usage(get_found, resource, startTime, None,
-        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
-        #            'ont:Query': '?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'
-        #            }
-        #           )
-        #
-        # doc.usage(get_lost, resource, startTime, None,
-        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
-        #            'ont:Query': '?type=Animal+Lost&$select=type,latitude,longitude,OPEN_DT'
-        #            }
-        #           )
 
-        # lost = doc.entity('dat:alice_bob#lost',
-        #                   {prov.model.PROV_LABEL: 'Animals Lost', prov.model.PROV_TYPE: 'ont:DataSet'})
-        # doc.wasAttributedTo(lost, this_script)
-        # doc.wasGeneratedBy(lost, get_lost, endTime)
-        # doc.wasDerivedFrom(lost, resource, get_lost, get_lost, get_lost)
-        #
-        # found = doc.entity('dat:alice_bob#found',
-        #                    {prov.model.PROV_LABEL: 'Animals Found', prov.model.PROV_TYPE: 'ont:DataSet'})
+
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
-        doc.wasDerivedFrom(output, resource1, this_run, this_run, this_run)
         doc.wasDerivedFrom(output, resource2, this_run, this_run, this_run)
 
         repo.logout()

@@ -11,7 +11,7 @@ class hospital(dml.Algorithm):
     writes = ['alyu_sharontj_yuxiao_yzhang11.hospital']
 
     @staticmethod
-    def execute(trial=True):
+    def execute(trial=False):
         '''Retrieve some data sets (not using the API here for the sake of simplicity).'''
         startTime = datetime.datetime.now()
 
@@ -32,10 +32,10 @@ class hospital(dml.Algorithm):
         repo.createCollection("hospital")
         repo['alyu_sharontj_yuxiao_yzhang11.hospital'].insert_many(r)    #insert data into database?
         repo['alyu_sharontj_yuxiao_yzhang11.hospital'].metadata({'complete':True})
-        print(repo['alyu_sharontj_yuxiao_yzhang11.hospital'].metadata())
+        # print(repo['alyu_sharontj_yuxiao_yzhang11.hospital'].metadata())
 
 
-        repo.logout()
+        # repo.logout()
 
         endTime = datetime.datetime.now()
 
@@ -59,6 +59,7 @@ class hospital(dml.Algorithm):
         doc.add_namespace('log', 'http://datamechanics.io/log/') # The event log.
         doc.add_namespace('bdp', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/')
         # http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/hospitalsgeo.json
+
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#hospital', {prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})#change to file name
         resource = doc.entity('bdp:hospitalsgeo', {'prov:label':'hospital', prov.model.PROV_TYPE:'ont:DataResource', 'ont:Extension':'json'})
         get_TS = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime)  #TS= traffic Signals

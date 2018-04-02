@@ -4,6 +4,7 @@ import dml
 import prov.model
 import datetime
 import uuid
+import csv
 
 
 
@@ -13,7 +14,7 @@ class garden(dml.Algorithm):
     writes = ['alyu_sharontj_yuxiao_yzhang11.garden','alyu_sharontj_yuxiao_yzhang11.garden_count','alyu_sharontj_yuxiao_yzhang11.garden_new_zip' ]
 
     @staticmethod
-    def execute(trial=True):
+    def execute(trial=False):
         '''Retrieve some data sets (not using the API here for the sake of simplicity).'''
         startTime = datetime.datetime.now()
 

@@ -25,17 +25,16 @@ class education(dml.Algorithm):
 
         response = urllib.request.urlopen(url).read().decode("utf-8")
         r = json.loads(response)
-        print(r['features'])
         s = json.dumps(r, sort_keys=True, indent=2)
 
         repo.dropCollection("education") #name of the data link: e.g. station_links
         repo.createCollection("education")
         repo['alyu_sharontj_yuxiao_yzhang11.education'].insert_many(r['features'])    #insert data into database?
         repo['alyu_sharontj_yuxiao_yzhang11.education'].metadata({'complete':True})
-        print(repo['alyu_sharontj_yuxiao_yzhang11.education'].metadata())
+        # print(repo['alyu_sharontj_yuxiao_yzhang11.education'].metadata())
 
 
-        repo.logout()
+        # repo.logout()
 
         endTime = datetime.datetime.now()
 

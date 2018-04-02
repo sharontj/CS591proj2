@@ -64,3 +64,12 @@ def distance(origin, destination):
     d = radius * c
 
     return d
+
+
+def ADD(R):
+    tmp1 = 0
+    tmp2 = 0
+    for i in R:
+        tmp1 += i[0]
+        tmp2 += i[1]
+    return (tmp1, tmp2)

@@ -35,7 +35,7 @@ class rental(dml.Algorithm):
     writes = ['alyu_sharontj_yuxiao_yzhang11.rental']
 
     @staticmethod
-    def execute(trial=False):
+    def execute(trial=True):
         '''Retrieve some data sets (not using the API here for the sake of simplicity).'''
         startTime = datetime.datetime.now()
 
@@ -55,6 +55,7 @@ class rental(dml.Algorithm):
         endTime = datetime.datetime.now()
 
         return {"start": startTime, "end": endTime}
+
 
     @staticmethod
     def provenance(doc=prov.model.ProvDocument(), startTime=None, endTime=None):

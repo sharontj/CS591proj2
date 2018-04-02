@@ -4,6 +4,7 @@ import dml
 import prov.model
 import datetime
 import uuid
+import pprint
 import csv
 
 
@@ -13,8 +14,7 @@ class garden_vs_rent(dml.Algorithm):
 
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = ['alyu_sharontj_yuxiao_yzhang11.garden_count','alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
-    #writes = ['alyu_sharontj_yuxiao_yzhang11.garden_vs_rent']
-    writes = []
+    writes = ['alyu_sharontj_yuxiao_yzhang11.garden_vs_rent']
 
     @staticmethod
     def execute(trial=False):
@@ -33,46 +33,74 @@ class garden_vs_rent(dml.Algorithm):
         average_rent = repo['alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
 
         # print("i am here ")
-        # print(average_rent.find({"Zip": "02169"}))
-        gardeninfo = []
-        garden_cur = garden_count.find()  # filter not work
-        for info in garden_cur:
-            zip = info['_id']
-            count = info['count']
-            #print("zip is", zip)
-            #print("count is ", count)
+        # s = average_rent.find_one({"Zip": "11111"})
+        # print(s == None)
+        #pprint.pprint(average_rent.find_one({"Zip": "02169"}))
+        repo.dropCollection("garden_vs_rent")
+        repo.createCollection("garden_vs_rent")
 
-            gardeninfo.append((zip,count))
-        #print("garden ", gardeninfo)
-
-        rent_info = []
+        garden_cur = garden_count.find()
         rent_cur = average_rent.find()
-        for info in rent_cur:
-            zip = info['Zip']
-            average = info['Average']
-            #print("zip is", zip)
-            #print("average is ", average)
+        for i in rent_cur:
+            garden_vs_rent= {}
+            rent_zip = i["Zip"]
+            print("rent zip", rent_zip)
+            garden_vs_rent["Zip"] = rent_zip
+            garden_vs_rent["Average"] = i["Average"]
 
-            rent_info.append((zip, average))
-        #print("rent info is ", rent_info)
-        def product(R, S):
-            return [(t, u) for t in R for u in S]
 
-        def select(R, s):
-            return [t for t in R if s(t)]
+            if (garden_count.find_one({"_id": rent_zip}) != None):
+                print(garden_count.find_one({"_id": rent_zip})['count'])
 
-        def project(R, p):
-            return [p(t) for t in R]
+                garden_vs_rent["garden_count"] = garden_count.find_one({"_id": rent_zip})['count']
+            else:
+                garden_vs_rent["garden_count"] = 0
 
-        product_rent_garden = project(select(product(rent_info,gardeninfo), lambda t: t[0][0] == t[1][0]), lambda t: (t[0][0], t[0][1],t[1][1]) )
-        print("printing!!!!!")
-        print(product_rent_garden)
+            repo['alyu_sharontj_yuxiao_yzhang11.garden_vs_rent'].insert(garden_vs_rent)
+
+
+
+
+
+        # gardeninfo = []
+        # garden_cur = garden_count.find()  # filter not work
+        # for info in garden_cur:
+        #     zip = info['_id']
+        #     count = info['count']
+        #     #print("zip is", zip)
+        #     #print("count is ", count)
+        #
+        #     gardeninfo.append((zip,count))
+        # #print("garden ", gardeninfo)
+        #
+        # rent_info = []
+        # rent_cur = average_rent.find()
+        # for info in rent_cur:
+        #     zip = info['Zip']
+        #     average = info['Average']
+        #     #print("zip is", zip)
+        #     #print("average is ", average)
+        #
+        #     rent_info.append((zip, average))
+        # #print("rent info is ", rent_info)
+        # def product(R, S):
+        #     return [(t, u) for t in R for u in S]
+        #
+        # def select(R, s):
+        #     return [t for t in R if s(t)]
+        #
+        # def project(R, p):
+        #     return [p(t) for t in R]
+        #
+        # product_rent_garden = project(select(product(rent_info,gardeninfo), lambda t: t[0][0] == t[1][0]), lambda t: (t[0][0], t[0][1],t[1][1]) )
+        # print("printing!!!!!")
+        # print(product_rent_garden)
 
 
 
 
         #repo['alyu_sharontj_yuxiao_yzhang11.fire_count'].insert(fireCount)
-
+        print("INNN garden_vs_rent")
         endTime = datetime.datetime.now()
 
         return {"start": startTime, "end": endTime}
@@ -97,48 +125,40 @@ class garden_vs_rent(dml.Algorithm):
         doc.add_namespace('bdp', 'https://data.boston.gov/export/767/71c/')
 
 
-        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#fire',
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#garden_vs_rent',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
         resource = doc.entity('dat:2013fireincident_anabos2',
                               {'prov:label': '311, Service Requests', prov.model.PROV_TYPE: 'ont:DataResource',
                                'ont:Extension': 'json'})
 
+        garden_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden',
+                                  {prov.model.PROV_LABEL: 'garden',
+                                   prov.model.PROV_TYPE: 'ont:DataSet'})
+
+        rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.average_rent_zip',
+                                  {prov.model.PROV_LABEL: 'garden',
+                                   prov.model.PROV_TYPE: 'ont:DataSet'})
+
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
         doc.usage(this_run, resource, startTime, None,
                   {prov.model.PROV_TYPE: 'ont:Retrieval',})
 
-        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.fire', {prov.model.PROV_LABEL:'fire', prov.model.PROV_TYPE:'ont:DataSet'})
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden_vs_rent', {prov.model.PROV_LABEL:'fire', prov.model.PROV_TYPE:'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
         doc.wasAssociatedWith(this_run, this_script)
         doc.used(this_run, resource, startTime)
-        # doc.wasAssociatedWith(get_lost, this_script)
-        # doc.usage(get_found, resource, startTime, None,
-        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
-        #            'ont:Query': '?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'
-        #            }
-        #           )
-        #
-        # doc.usage(get_lost, resource, startTime, None,
-        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
-        #            'ont:Query': '?type=Animal+Lost&$select=type,latitude,longitude,OPEN_DT'
-        #            }
-        #           )
+        doc.used(this_run, garden_input, startTime)
+        doc.used(this_run, rent_input, startTime)
 
-        # lost = doc.entity('dat:alice_bob#lost',
-        #                   {prov.model.PROV_LABEL: 'Animals Lost', prov.model.PROV_TYPE: 'ont:DataSet'})
-        # doc.wasAttributedTo(lost, this_script)
-        # doc.wasGeneratedBy(lost, get_lost, endTime)
-        # doc.wasDerivedFrom(lost, resource, get_lost, get_lost, get_lost)
-        #
-        # found = doc.entity('dat:alice_bob#found',
-        #                    {prov.model.PROV_LABEL: 'Animals Found', prov.model.PROV_TYPE: 'ont:DataSet'})
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
         doc.wasDerivedFrom(output, resource, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output, garden_input, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output, rent_input, this_run, this_run, this_run)
 
         repo.logout()
 

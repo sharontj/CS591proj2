@@ -11,7 +11,7 @@ class MBTA(dml.Algorithm):
     writes = ['alyu_sharontj_yuxiao_yzhang11.MBTA']
 
     @staticmethod
-    def execute(trial=True):
+    def execute(trial=False):
         '''Retrieve some data sets (not using the API here for the sake of simplicity).'''
         startTime = datetime.datetime.now()
 
@@ -32,10 +32,10 @@ class MBTA(dml.Algorithm):
         repo.createCollection("MBTA")
         repo['alyu_sharontj_yuxiao_yzhang11.MBTA'].insert_many(r)    #insert data into database?
         repo['alyu_sharontj_yuxiao_yzhang11.MBTA'].metadata({'complete': True})
-        print(repo['alyu_sharontj_yuxiao_yzhang11.MBTA'].metadata())
+        # print(repo['alyu_sharontj_yuxiao_yzhang11.MBTA'].metadata())
 
 
-        repo.logout()
+        # repo.logout()
 
         endTime = datetime.datetime.now()
 
