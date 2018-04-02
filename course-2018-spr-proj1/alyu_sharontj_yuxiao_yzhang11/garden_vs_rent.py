@@ -4,16 +4,19 @@ import dml
 import prov.model
 import datetime
 import uuid
+import csv
 
 
 
-class garden(dml.Algorithm):
+class garden_vs_rent(dml.Algorithm):
+
+
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
-    reads = []
-    writes = ['alyu_sharontj_yuxiao_yzhang11.garden','alyu_sharontj_yuxiao_yzhang11.garden_count','alyu_sharontj_yuxiao_yzhang11.garden_new_zip' ]
+    reads = ['alyu_sharontj_yuxiao_yzhang11.garden_count','alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
+    writes = ['alyu_sharontj_yuxiao_yzhang11.garden_vs_rent']
 
     @staticmethod
-    def execute(trial=True):
+    def execute(trial=False):
         '''Retrieve some data sets (not using the API here for the sake of simplicity).'''
         startTime = datetime.datetime.now()
 
@@ -22,60 +25,52 @@ class garden(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        url = 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/garden_json.json'
-        response_json = urllib.request.urlopen(url).read().decode("utf-8")
-        #print("i am here!!!!")
-        #print(response_json)
-        r = json.loads(response_json)
-
-        # url2014 = 'http://datamechanics.io/data/2014fireincident_anabos2.json'
-        # response2014 = urllib.request.urlopen(url2014).read().decode("utf-8")
-        # fire2014 = json.loads(response2014)
-
-        # url2015 = 'http://datamechanics.io/data/2015fireincident_anabos2.json'
-        # response2015 = urllib.request.urlopen(url2015).read().decode("utf-8")
-        # fire2015 = json.loads(response2015)
 
 
-        # dict_values = csvConvert()
 
-        repo.dropCollection("garden")
-        repo.createCollection("garden")
-        repo['alyu_sharontj_yuxiao_yzhang11.garden'].insert_many(r)
+        garden_count = repo['alyu_sharontj_yuxiao_yzhang11.garden_count']
+        average_rent = repo['alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
+
+        # print("i am here ")
+        # print(average_rent.find({"Zip": "02169"}))
+        gardeninfo = []
+        garden_cur = garden_count.find()  # filter not work
+        for info in garden_cur:
+            zip = info['_id']
+            count = info['count']
+            #print("zip is", zip)
+            #print("count is ", count)
+
+            gardeninfo.append((zip,count))
+        #print("garden ", gardeninfo)
+
+        rent_info = []
+        rent_cur = average_rent.find()
+        for info in rent_cur:
+            zip = info['Zip']
+            average = info['Average']
+            #print("zip is", zip)
+            #print("average is ", average)
+
+            rent_info.append((zip, average))
+        #print("rent info is ", rent_info)
+        def product(R, S):
+            return [(t, u) for t in R for u in S]
+
+        def select(R, s):
+            return [t for t in R if s(t)]
+
+        def project(R, p):
+            return [p(t) for t in R]
+
+        product_rent_garden = project(select(product(rent_info,gardeninfo), lambda t: t[0][0] == t[1][0]), lambda t: (t[0][0], t[0][1],t[1][1]) )
+        print("printing!!!!!")
+        print(product_rent_garden)
 
 
-        garden = repo['alyu_sharontj_yuxiao_yzhang11.garden'].find()
-
-        repo.dropCollection("garden_new_zip")
-        repo.createCollection("garden_new_zip")
-
-        for i in garden:
-            garden_new_zip = {}
-            old_zip = i["zip_code"]
-            new_zip = "0" + old_zip
-            garden_new_zip["zip"] = new_zip
-            garden_new_zip["location"] = i["location"]
-            garden_new_zip["site"] = i["site"]
-            repo['alyu_sharontj_yuxiao_yzhang11.garden_new_zip'].insert(garden_new_zip)
 
 
-        repo.dropCollection("garden_count")
-        repo.createCollection("garden_count")
-
-        garden_with_new_zip = repo['alyu_sharontj_yuxiao_yzhang11.garden_new_zip']
-
-        group = {
-            '_id': "$zip",
-            'count': {'$sum': 1}
-        }
-
-        gardenCount = garden_with_new_zip.aggregate([
-            {
-                '$group': group
-            }
-        ])
-
-        repo['alyu_sharontj_yuxiao_yzhang11.garden_count'].insert(gardenCount)
+        #repo['alyu_sharontj_yuxiao_yzhang11.fire_count'].insert(fireCount)
 
         endTime = datetime.datetime.now()
 
@@ -101,7 +96,7 @@ class garden(dml.Algorithm):
         doc.add_namespace('bdp', 'https://data.boston.gov/export/767/71c/')
 
 
-        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#garden',
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#fire',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
         resource = doc.entity('dat:2013fireincident_anabos2',
@@ -113,7 +108,7 @@ class garden(dml.Algorithm):
         doc.usage(this_run, resource, startTime, None,
                   {prov.model.PROV_TYPE: 'ont:Retrieval',})
 
-        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden', {prov.model.PROV_LABEL:'garden', prov.model.PROV_TYPE:'ont:DataSet'})
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.fire', {prov.model.PROV_LABEL:'fire', prov.model.PROV_TYPE:'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
@@ -149,8 +144,8 @@ class garden(dml.Algorithm):
         return doc
 
 
-garden.execute()
-doc = garden.provenance()
+garden_vs_rent.execute()
+doc = garden_vs_rent.provenance()
 print(doc.get_provn())
 print(json.dumps(json.loads(doc.serialize()), indent=4))
 
