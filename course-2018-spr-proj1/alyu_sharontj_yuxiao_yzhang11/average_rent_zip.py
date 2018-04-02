@@ -76,7 +76,7 @@ class average_rent_zip(dml.Algorithm):
 
             rent_average = rent_sum /12.0   
             rental_zip_price["Average"] = rent_average
-            print("i am here !!!!!")
+            # print("i am here !!!!!")
             print(rental_zip_price)
             repo['alyu_sharontj_yuxiao_yzhang11.average_rent_zip'].insert(rental_zip_price)
 
