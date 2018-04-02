@@ -9,14 +9,14 @@ from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
 
 
 
-class education_hubway(dml.Algorithm):
+class education_trans_avg(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
     reads = ['alyu_sharontj_yuxiao_yzhang11.education', 'alyu_sharontj_yuxiao_yzhang11.hubway'] #read the data of roads and trafficsignals from mongo
-    writes = ['alyu_sharontj_yuxiao_yzhang11.education_hubway']
+    writes = ['alyu_sharontj_yuxiao_yzhang11.education_trans_avg']
 
 
     @staticmethod
-    def execute(trial=False):
+    def execute(trial=True):
         startTime = datetime.datetime.now()
 
         '''Set up the database connection.'''
@@ -40,6 +40,7 @@ class education_hubway(dml.Algorithm):
         # print(schoolinfo)
 
 
+
         hubwaydb = repo['alyu_sharontj_yuxiao_yzhang11.hubway']
         hubwayinfo = []
         match = {
@@ -60,30 +61,53 @@ class education_hubway(dml.Algorithm):
         edu_hub = [(s[0],s[1], h[0], distance(s[2], h[1])) for (s, h) in product(schoolinfo, hubwayinfo)]
         print(len(edu_hub))
 
-        edu_hub_3 = [ (s,zip,h,dis) for (s,zip,h,dis) in edu_hub if dis<3]
-        print(len(edu_hub_3))
+        edu_hub_1 = [ ((s,zip),dis) for (s,zip,h,dis) in edu_hub if dis<0.8]
+        print(len(edu_hub_1))
 
-        repo.dropCollection("education_hubway")
-        repo.createCollection("education_hubway")
-        for i in edu_hub_3:
-            single = {'schoolid':i[0], 'zip':i[1], 'dis':i[3]}
-            repo['alyu_sharontj_yuxiao_yzhang11.education_hubway'].insert_one(single)
+        edu_hub_count = aggregate(project(edu_hub_1, lambda t: (t[0],1)), sum)
 
 
-        repo.dropCollection("education_hubway_count")
-        repo.createCollection("education_hubway_count")
-        edu_hubdb = repo['alyu_sharontj_yuxiao_yzhang11.education_hubway']
-        group = {
-            '_id': { "schoolid":"$schoolid", "zip":"$zip" },
-            'hubways': {"$sum": 1}
-        }
 
-        edu_hub_count = edu_hubdb.aggregate([
-            {
-                '$group': group
-            }
-        ])
-        repo['alyu_sharontj_yuxiao_yzhang11.education_hubway_count'].insert(edu_hub_count)
+        mbtadb = repo['alyu_sharontj_yuxiao_yzhang11.MBTA']
+        mbtainfo = []
+        mbtacur = mbtadb.find();
+
+        for info in mbtacur:
+            mbta_id = info['stop_id']
+            Latitude = float(info['stop_lat'])
+            Longitude = float(info['stop_lon'])
+            mbtainfo.append((mbta_id, (Latitude, Longitude)))
+        # print(mbtainfo)
+
+        edu_mbta = [(s[0], s[1], distance(s[2], h[1])) for (s, h) in product(schoolinfo, mbtainfo)]
+        print(len(edu_mbta))
+
+        edu_mbta_1 = [((s, zip), dis) for (s, zip, dis) in edu_mbta if dis < 0.8]
+        print(len(edu_mbta_1))
+
+        edu_mbta_count = aggregate(project(edu_mbta_1, lambda t: (t[0], 1)), sum)
+        # print(edu_mbta_count)
+
+        select_edu_mbta_hub = select(product(edu_hub_count, edu_mbta_count), lambda t: t[0][0][0]==t[1][0][0])
+        edu_hub_mbta = [(h[0][1], h[0][0], h[1]+m[1]) for (h,m) in select_edu_mbta_hub]
+        print(edu_hub_mbta)
+
+        zip_edu_trans = project(edu_hub_mbta, lambda t: (t[0], (1, t[2])))
+        print(zip_edu_trans)
+
+        zip_edu_trans_count = aggregate(zip_edu_trans, ADD)
+        print(zip_edu_trans_count)
+
+        zip_edu_trans_avg = [(z, t[0], t[1]/t[0]) for (z,t)in zip_edu_trans_count]
+        print(zip_edu_trans_avg)
+
+
+
+        repo.dropCollection("education_trans_avg")
+        repo.createCollection("education_trans_avg")
+        for i in zip_edu_trans_avg:
+            single = {'zip': i[0], 'school_count': i[1], 'trans_avg': i[2]}
+            repo['alyu_sharontj_yuxiao_yzhang11.education_trans_avg'].insert_one(single)
 
 
         endTime = datetime.datetime.now()
@@ -111,7 +135,7 @@ class education_hubway(dml.Algorithm):
         # doc.add_namespace('bdp', 'http://bostonopendata-boston.opendata.arcgis.com/datasets/')
         # doc.add_namespace('hdv', 'https://dataverse.harvard.edu/dataset.xhtml')
 
-        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#education_hubway',
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#education_trans_avg',
             { prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})
 
 
@@ -126,8 +150,8 @@ class education_hubway(dml.Algorithm):
         this_run = doc.activity('log:a'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
 
-        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.education_hubway',
-            { prov.model.PROV_LABEL:'education_hubway', prov.model.PROV_TYPE: 'ont:DataSet'})
+        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.education_trans_avg',
+            { prov.model.PROV_LABEL:'education_trans_avg', prov.model.PROV_TYPE: 'ont:DataSet'})
 
 
         doc.wasAssociatedWith(this_run, this_script)
@@ -146,8 +170,8 @@ class education_hubway(dml.Algorithm):
 
 
 
-education_hubway.execute()
-doc = education_hubway.provenance()
+education_trans_avg.execute()
+doc = education_trans_avg.provenance()
 print(doc.get_provn())
 print(json.dumps(json.loads(doc.serialize()), indent=4))
 
