@@ -113,13 +113,13 @@ Number of gardens vs Rent
 
 ![arden_ren](garden_rent.png)
 
+
+
 Number of Fire/Hospital rate vs Rent
 
-<<<<<<< HEAD
 ![ireHospital_Ren](FireHospital_Rent.png)
-=======
-![ire:HospitalvsRen](/Users/erinyu/Desktop/CS591proj2/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/picture/Fire:HospitalvsRent.png)
->>>>>>> eb7aee78145b77482c7ab1c3b3241a336c0d63b6
+
+
 
 Number of transport vs Education
 
