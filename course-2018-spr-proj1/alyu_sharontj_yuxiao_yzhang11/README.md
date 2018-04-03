@@ -13,7 +13,7 @@ Boston is a beautiful and convenient city to live in. Because half of the Boston
 1. Ailing Yu(alyu@bu.edu)
 2. Jin Tang(sharontj@bu.edu)
 3. Yuxiao Wang(yuxiao@bu.edu)
-4. YunZhang(yzhang11@bu.edu)
+4. Yunyu Zhang(yzhang11@bu.edu)
 
 
 
