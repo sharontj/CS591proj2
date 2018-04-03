@@ -70,9 +70,15 @@ constraint3:  每个zipcode内
 
 
 
-# Coefficient
+# Coefficient Table
 
-
+| Correlation                 | Correlation Coefficient |
+| --------------------------- | ----------------------- |
+| Rent vs education           | 0.22430                 |
+| Rent vs Garden              | 0.05451                 |
+| Education vs transportation | 0.04157                 |
+|                             |                         |
+|                             |                         |
 
 
 
