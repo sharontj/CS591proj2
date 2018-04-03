@@ -113,13 +113,9 @@ Number of gardens vs Rent
 
 ![arden_ren](garden_rent.png)
 
-
-
 Number of Fire/Hospital rate vs Rent
 
-![ire:HospitalvsRen](Fire:HospitalvsRent.png)
-
-
+![ire:HospitalvsRent-271894](Fire:HospitalvsRent-2718948.png)
 
 Number of transport vs Education
 
