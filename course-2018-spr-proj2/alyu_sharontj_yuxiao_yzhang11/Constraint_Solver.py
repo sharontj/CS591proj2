@@ -73,7 +73,6 @@ class Constraint_Solver(dml.Algorithm):
 
 
         '''get number of schools = (zipcode,education_count) from db.alyu_sharontj_yuxiao_yzhang11.education_rent'''
-
         schoolinfo = []
         edudb = repo['alyu_sharontj_yuxiao_yzhang11.education']
         educur = edudb.find()
@@ -89,14 +88,12 @@ class Constraint_Solver(dml.Algorithm):
 
 
         '''get fire_hospital = (zipcode,Fire_Hospital_vs_Rent) from db.alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent'''
-        # print("\n\n")
         fireinfo = []
         fire_hos_db = repo['alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent']
         fire_hos_cur = fire_hos_db.find()
         for info in fire_hos_cur:
             zipcode = info['Zipcode']
             fire_hos_rate = info['fire/hospital']
-            # print(str(zipcode)+","+ str(fire_hos_rate))
             fireinfo.append((zipcode, fire_hos_rate))
         firedict = dict(fireinfo)
 
@@ -115,12 +112,11 @@ class Constraint_Solver(dml.Algorithm):
 
         '''find mean, std of each list'''
         def get_boundary(info):
-            values = info.values()
-            sum = 0
-            counter = 0
-            value_list = list(values)
+            value_list=list(info.values())
             mean = stats.mean(value_list)
+            # print(str(mean))
             std = stats.stdev(value_list)
+            # print(str(std))
             low = mean-3*std
             high = mean + 3*std
             return low, high
@@ -133,15 +129,19 @@ class Constraint_Solver(dml.Algorithm):
                       "02124", "02120", "02119", "02121"]
 
         scorelist = []
-        weight= {"rent": 0.5, "edu": 0.3,"fire": 0.1, "garden": 0.1}
+        weight = {"rent": 0.5, "edu": 0.3,"fire": 0.1, "garden": 0.1}
 
+        def normalize(value, low, high):
+            return float((value-low)/(high-low))
 
         def getscore(z, dict,factor):
             if(z in dict.keys()):
                 low,high = get_boundary(dict)
-
                 if(dict[z] <= high and  dict[z] >= low):
-                    score2 = dict[z]*weight[factor]
+                    print("original"+str(dict[z]))
+                    n = normalize(dict[z], low,high) * 100
+                    print("normal"+str(n))
+                    score2 = n*weight[factor]
                 else:
                     score2 = 0
             else:
@@ -151,9 +151,13 @@ class Constraint_Solver(dml.Algorithm):
 
 
         for zipcode in zipcode_list:
+            print('rent')
             rentscore = getscore(zipcode, rentdict,'rent')
+            print('edu')
             eduscore = getscore(zipcode, edudict, 'edu')
+            print('fire')
             firescore = getscore(zipcode, firedict,'fire')
+            print('garden')
             gardenscore = getscore(zipcode, gardendict, 'garden')
 
             score = rentscore + firescore + eduscore + gardenscore

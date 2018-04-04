@@ -2,52 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c97f2cb9-7f4d-42cf-84b9-b473e20de784" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/.idea/course-2018-spr-proj1.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alice_bob/example.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/Fire:HospitalvsRent-2718948.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/Fire:HospitalvsRent.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/FireHospital_Rent.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/Fire_Hospital_vs_Rent.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/MBTA.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/Util/Util.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/average_rent_zip.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/edu_rent-2718679.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/edu_rent.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/edu_trans_avg.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/education.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/education_rent.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/education_trans_avg.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/fire.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/garden.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/garden_rent.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/hospital.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/hubway.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/picture/FireHospital_Rent.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/picture/edu_rent.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/picture/edu_trans_avg.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/picture/garden_rent.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/rental.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/auth.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/config.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/execute.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/provenance.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/reset.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/setup.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/yuxiao_yzhang11/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/yuxiao_yzhang11/crime.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/yuxiao_yzhang11/fire.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/yuxiao_yzhang11/fire_rental.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/yuxiao_yzhang11/houseValue.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/yuxiao_yzhang11/income.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj1/yuxiao_yzhang11/zriRentPrice.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -100,12 +55,19 @@
       <file leaf-file-name="Constraint_Solver.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="142" column="36" lean-forward="false" selection-start-line="142" selection-start-column="36" selection-end-line="142" selection-end-column="36" />
+            <state relative-caret-position="2441">
+              <caret line="263" column="0" lean-forward="true" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edu_trans_avg.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/edu_trans_avg.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -226,7 +188,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Constraint_Solver">
+  <component name="RunManager" selected="Python.Constraint_Solver (1)">
+    <configuration name="Constraint_Solver (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CS591proj2" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="Constraint_Solver" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -448,18 +429,20 @@
       <option name="_new_target" value="&quot;.&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.garden" />
       <item index="1" class="java.lang.String" itemvalue="Python.geosl_test" />
       <item index="2" class="java.lang.String" itemvalue="Python.garden_vs_rent" />
       <item index="3" class="java.lang.String" itemvalue="Python.Constraint_Solver" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Constraint_Solver (1)" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.Constraint_Solver" />
-        <item index="1" class="java.lang.String" itemvalue="Python.garden_vs_rent" />
-        <item index="2" class="java.lang.String" itemvalue="Python.geosl_test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.garden" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.Constraint_Solver (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Constraint_Solver" />
+        <item index="2" class="java.lang.String" itemvalue="Python.garden_vs_rent" />
+        <item index="3" class="java.lang.String" itemvalue="Python.geosl_test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.garden" />
       </list>
     </recent_temporary>
   </component>
@@ -484,9 +467,9 @@
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16842847" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.095623985" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26689976" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09557109" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26689976" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3986014" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -533,19 +516,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/fire.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="33" column="77" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/average_rent_zip.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
@@ -876,10 +851,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/edu_trans_avg.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="142" column="36" lean-forward="false" selection-start-line="142" selection-start-column="36" selection-end-line="142" selection-end-column="36" />
+        <state relative-caret-position="2441">
+          <caret line="263" column="0" lean-forward="true" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
