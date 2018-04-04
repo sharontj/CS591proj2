@@ -91,7 +91,7 @@ class garden(dml.Algorithm):
         doc.add_namespace('log', 'http://datamechanics.io/log/')  # The event log.
         doc.add_namespace('bdp', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/')
 
-        url = 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/garden_json.json'
+        # url = 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/garden_json.json'
 
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#garden',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})

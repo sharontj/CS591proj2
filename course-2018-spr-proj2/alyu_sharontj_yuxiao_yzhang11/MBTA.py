@@ -72,7 +72,7 @@ class MBTA(dml.Algorithm):
                   )
 
 
-        TS = doc.entity('alg:alyu_sharontj_yuxiao_yzhang11#MBTA', {prov.model.PROV_LABEL:'MBTA_Stops', prov.model.PROV_TYPE:'ont:DataSet'})
+        TS = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#MBTA', {prov.model.PROV_LABEL:'MBTA_Stops', prov.model.PROV_TYPE:'ont:DataSet'})
         doc.wasAttributedTo(TS, this_script)
         doc.wasGeneratedBy(TS, get_TS, endTime)
         doc.wasDerivedFrom(TS, resource, get_TS, get_TS, get_TS)

@@ -84,11 +84,11 @@ class garden_vs_rent(dml.Algorithm):
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
 
-        garden_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden_count',
+        garden_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#garden_count',
                                   {prov.model.PROV_LABEL: 'garden_count',
                                    prov.model.PROV_TYPE: 'ont:DataSet'})
 
-        rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.average_rent_zip',
+        rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#average_rent_zip',
                                   {prov.model.PROV_LABEL: 'average_rent_zip',
                                    prov.model.PROV_TYPE: 'ont:DataSet'})
 

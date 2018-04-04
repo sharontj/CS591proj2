@@ -10,7 +10,9 @@ from math import sqrt
 
 class correlation(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
-    reads = ['alyu_sharontj_yuxiao_yzhang11.education_rent','alyu_sharontj_yuxiao_yzhang11.garden_vs_rent','alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent']
+    reads = ['alyu_sharontj_yuxiao_yzhang11.education_rent',
+             'alyu_sharontj_yuxiao_yzhang11.garden_vs_rent',
+             'alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent']
     writes = ['alyu_sharontj_yuxiao_yzhang11.correlation']
 
     @staticmethod
@@ -128,9 +130,9 @@ class correlation(dml.Algorithm):
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
         doc.add_namespace('alg',
-                          'http://datamechanics.io/algorithm/alyu_sharontj_yuxiao_yzhang11')  # The scripts are in <folder>#<filename> format.
+                          'http://datamechanics.io/algorithm/')  # The scripts are in <folder>#<filename> format.
         doc.add_namespace('dat',
-                          'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11')  # The data sets are in <user>#<collection> format.
+                          'http://datamechanics.io/data/')  # The data sets are in <user>#<collection> format.
         doc.add_namespace('ont',
                           'http://datamechanics.io/ontology#')  # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
         doc.add_namespace('log', 'http://datamechanics.io/log/')  # The event log.
@@ -138,17 +140,19 @@ class correlation(dml.Algorithm):
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#correlation',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
-        fire_h_rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent',
+        fire_h_rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#Fire_Hospital_vs_Rent',
                                     {prov.model.PROV_LABEL: 'Fire_Hospital_vs_Rent',
                                      prov.model.PROV_TYPE: 'ont:DataSet'})
 
-        garden_rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden_vs_rent',
+        garden_rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#garden_vs_rent',
                                       {prov.model.PROV_LABEL: 'garden_vs_rent',
                                        prov.model.PROV_TYPE: 'ont:DataSet'})
 
-        edu_rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.education_rent',
+        edu_rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#education_rent',
                                 {prov.model.PROV_LABEL: 'education_rent',
                                  prov.model.PROV_TYPE: 'ont:DataSet'})
+
+
 
         this_run = doc.activity('log:a' + str(uuid.uuid4()), startTime,
                                 endTime)  # , 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})

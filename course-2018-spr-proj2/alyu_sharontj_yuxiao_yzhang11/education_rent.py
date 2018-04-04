@@ -107,8 +107,8 @@ class education_rent(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        doc.add_namespace('alg', 'http://datamechanics.io/algorithm/alyu_sharontj_yuxiao_yzhang11') # The scripts are in <folder>#<filename> format.
-        doc.add_namespace('dat', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11') # The data sets are in <user>#<collection> format.
+        doc.add_namespace('alg', 'http://datamechanics.io/algorithm/') # The scripts are in <folder>#<filename> format.
+        doc.add_namespace('dat', 'http://datamechanics.io/data/') # The data sets are in <user>#<collection> format.
         doc.add_namespace('ont', 'http://datamechanics.io/ontology#') # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
         doc.add_namespace('log', 'http://datamechanics.io/log/') # The event log.
 
@@ -117,18 +117,18 @@ class education_rent(dml.Algorithm):
             { prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})
 
 
-        education_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.education',
+        education_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#education',
                                 {prov.model.PROV_LABEL:'education',
                                  prov.model.PROV_TYPE:'ont:DataSet'})
 
-        rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.average_rent_zip',
+        rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#average_rent_zip',
                                   {prov.model.PROV_LABEL:'average_rent_zip',
                                    prov.model.PROV_TYPE:'ont:DataSet'})
 
         this_run = doc.activity('log:a'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
 
-        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.education_rent',
+        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#education_rent',
             { prov.model.PROV_LABEL:'education_rent', prov.model.PROV_TYPE: 'ont:DataSet'})
 
 

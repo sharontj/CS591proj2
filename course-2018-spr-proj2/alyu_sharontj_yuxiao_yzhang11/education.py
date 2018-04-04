@@ -69,7 +69,7 @@ class education(dml.Algorithm):
                   )
 
 
-        TS = doc.entity('alg:alyu_sharontj_yuxiao_yzhang11#education',
+        TS = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#education',
                         {prov.model.PROV_LABEL:'College_University',
                          prov.model.PROV_TYPE:'ont:DataSet'})
 

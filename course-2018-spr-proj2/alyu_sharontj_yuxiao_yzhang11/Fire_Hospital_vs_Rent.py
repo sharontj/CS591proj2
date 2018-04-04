@@ -165,8 +165,8 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        doc.add_namespace('alg', 'http://datamechanics.io/algorithm/alyu_sharontj_yuxiao_yzhang11') # The scripts are in <folder>#<filename> format.
-        doc.add_namespace('dat', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11') # The data sets are in <user>#<collection> format.
+        doc.add_namespace('alg', 'http://datamechanics.io/algorithm/') # The scripts are in <folder>#<filename> format.
+        doc.add_namespace('dat', 'http://datamechanics.io/data/') # The data sets are in <user>#<collection> format.
         doc.add_namespace('ont', 'http://datamechanics.io/ontology#') # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
         doc.add_namespace('log', 'http://datamechanics.io/log/') # The event log.
 
@@ -175,15 +175,15 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
             { prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})
 
 
-        hospital_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.hospital',
+        hospital_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#hospital',
                                 {prov.model.PROV_LABEL:'hospital',
                                  prov.model.PROV_TYPE:'ont:DataSet'})
 
-        fire_count_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.fire_count',
+        fire_count_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#fire_count',
                                   {prov.model.PROV_LABEL:'fire_count',
                                    prov.model.PROV_TYPE:'ont:DataSet'})
 
-        rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.average_rent_zip',
+        rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#average_rent_zip',
                                   {prov.model.PROV_LABEL:'average_rent_zip',
                                    prov.model.PROV_TYPE:'ont:DataSet'})
 

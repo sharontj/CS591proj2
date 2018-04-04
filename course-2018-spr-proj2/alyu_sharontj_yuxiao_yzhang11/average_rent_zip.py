@@ -67,11 +67,11 @@ class average_rent_zip(dml.Algorithm):
         doc.add_namespace('log', 'http://datamechanics.io/log/')  # The event log.
         doc.add_namespace('bdp', 'https://data.boston.gov/export/767/71c/')
 
-        this_script = doc.agent('alg:yuxiao_yzhang11#average_rent_zip',
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#average_rent_zip',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
 
-        resource = doc.entity('dat:yuxiao_yzhang11#rental',
+        resource = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#rental',
                                {'prov:label': 'rental', prov.model.PROV_TYPE: 'ont:DataResource'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
@@ -80,7 +80,7 @@ class average_rent_zip(dml.Algorithm):
         doc.usage(this_run, resource, startTime, None,
                   {prov.model.PROV_TYPE: 'ont:Retrieval', })
 
-        output = doc.entity('dat:yuxiao_yzhang11.average_rent_zip',
+        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#average_rent_zip',
                             {prov.model.PROV_LABEL: 'average_rent_zip', prov.model.PROV_TYPE: 'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)

@@ -190,8 +190,8 @@ class Constraint_Solver(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        doc.add_namespace('alg', 'http://datamechanics.io/algorithm/alyu_sharontj_yuxiao_yzhang11') # The scripts are in <folder>#<filename> format.
-        doc.add_namespace('dat', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11') # The data sets are in <user>#<collection> format.
+        doc.add_namespace('alg', 'http://datamechanics.io/algorithm/') # The scripts are in <folder>#<filename> format.
+        doc.add_namespace('dat', 'http://datamechanics.io/data/') # The data sets are in <user>#<collection> format.
         doc.add_namespace('ont', 'http://datamechanics.io/ontology#') # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
         doc.add_namespace('log', 'http://datamechanics.io/log/') # The event log.
 
@@ -199,27 +199,27 @@ class Constraint_Solver(dml.Algorithm):
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#Constraint_Solver',
             { prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})
 
-        rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.average_rent_zip',
+        rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#average_rent_zip',
                                 {prov.model.PROV_LABEL:'average_rent_zip',
                                  prov.model.PROV_TYPE:'ont:DataSet'})
 
-        garden_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden',
+        garden_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#garden',
                                   {prov.model.PROV_LABEL:'garden',
                                    prov.model.PROV_TYPE:'ont:DataSet'})
 
-        education_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.education',
+        education_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#education',
                                   {prov.model.PROV_LABEL:'education',
                                    prov.model.PROV_TYPE:'ont:DataSet'})
 
-        firehospital_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent',
-                                  {prov.model.PROV_LABEL:'firehospital_input',
-                                   prov.model.PROV_TYPE:'ont:DataSet'})
+        firehospital_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#Fire_Hospital_vs_Rent',
+                                  {prov.model.PROV_LABEL: 'firehospital_input',
+                                   prov.model.PROV_TYPE: 'ont:DataSet'})
 
         this_run = doc.activity('log:a'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
 
-        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent',
-            { prov.model.PROV_LABEL:'Fire_Hospital_vs_Rent', prov.model.PROV_TYPE: 'ont:DataSet'})
+        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#Result',
+            { prov.model.PROV_LABEL:'Result', prov.model.PROV_TYPE: 'ont:DataSet'})
 
 
         doc.wasAssociatedWith(this_run, this_script)

@@ -127,8 +127,8 @@ class education_trans_avg(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        doc.add_namespace('alg', 'http://datamechanics.io/algorithm/alyu_sharontj_yuxiao_yzhang11') # The scripts are in <folder>#<filename> format.
-        doc.add_namespace('dat', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11') # The data sets are in <user>#<collection> format.
+        doc.add_namespace('alg', 'http://datamechanics.io/algorithm/') # The scripts are in <folder>#<filename> format.
+        doc.add_namespace('dat', 'http://datamechanics.io/data/') # The data sets are in <user>#<collection> format.
         doc.add_namespace('ont', 'http://datamechanics.io/ontology#') # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
         doc.add_namespace('log', 'http://datamechanics.io/log/') # The event log.
         # doc.add_namespace('bdp', 'http://bostonopendata-boston.opendata.arcgis.com/datasets/')
@@ -138,15 +138,15 @@ class education_trans_avg(dml.Algorithm):
             { prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})
 
 
-        education_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.education',
+        education_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#education',
                                 {prov.model.PROV_LABEL:'education',
                                  prov.model.PROV_TYPE:'ont:DataSet'})
 
-        hubway_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.hubway',
+        hubway_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#hubway',
                                   {prov.model.PROV_LABEL:'hubway',
                                    prov.model.PROV_TYPE:'ont:DataSet'})
 
-        mbta_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.MBTA',
+        mbta_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#MBTA',
                                   {prov.model.PROV_LABEL: 'MBTA',
                                    prov.model.PROV_TYPE: 'ont:DataSet'})
 
