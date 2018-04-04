@@ -25,20 +25,10 @@ class garden(dml.Algorithm):
 
         url = 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/garden_json.json'
         response_json = urllib.request.urlopen(url).read().decode("utf-8")
-        #print("i am here!!!!")
-        #print(response_json)
+
         r = json.loads(response_json)
 
-        # url2014 = 'http://datamechanics.io/data/2014fireincident_anabos2.json'
-        # response2014 = urllib.request.urlopen(url2014).read().decode("utf-8")
-        # fire2014 = json.loads(response2014)
 
-        # url2015 = 'http://datamechanics.io/data/2015fireincident_anabos2.json'
-        # response2015 = urllib.request.urlopen(url2015).read().decode("utf-8")
-        # fire2015 = json.loads(response2015)
-
-
-        # dict_values = csvConvert()
 
         repo.dropCollection("garden")
         repo.createCollection("garden")
@@ -99,48 +89,28 @@ class garden(dml.Algorithm):
         doc.add_namespace('ont',
                           'http://datamechanics.io/ontology#')  # 'Extension', 'DataResource', 'DataSet', 'Retrieval', 'Query', or 'Computation'.
         doc.add_namespace('log', 'http://datamechanics.io/log/')  # The event log.
-        doc.add_namespace('bdp', 'https://data.boston.gov/export/767/71c/')
+        doc.add_namespace('bdp', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/')
 
+        url = 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/garden_json.json'
 
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#garden',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
-        resource = doc.entity('dat:2013fireincident_anabos2',
-                              {'prov:label': '311, Service Requests', prov.model.PROV_TYPE: 'ont:DataResource',
+        resource = doc.entity('dat:garden_json',
+                              {'prov:label': 'garden', prov.model.PROV_TYPE: 'ont:DataResource',
                                'ont:Extension': 'json'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
         doc.usage(this_run, resource, startTime, None,
-                  {prov.model.PROV_TYPE: 'ont:Retrieval',})
+                  {prov.model.PROV_TYPE: 'ont:Retrieval'})
 
-        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden', {prov.model.PROV_LABEL:'garden', prov.model.PROV_TYPE:'ont:DataSet'})
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#garden_count', {prov.model.PROV_LABEL:'garden_count', prov.model.PROV_TYPE:'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
         doc.wasAssociatedWith(this_run, this_script)
         doc.used(this_run, resource, startTime)
-        # doc.wasAssociatedWith(get_lost, this_script)
-        # doc.usage(get_found, resource, startTime, None,
-        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
-        #            'ont:Query': '?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'
-        #            }
-        #           )
-        #
-        # doc.usage(get_lost, resource, startTime, None,
-        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
-        #            'ont:Query': '?type=Animal+Lost&$select=type,latitude,longitude,OPEN_DT'
-        #            }
-        #           )
-
-        # lost = doc.entity('dat:alice_bob#lost',
-        #                   {prov.model.PROV_LABEL: 'Animals Lost', prov.model.PROV_TYPE: 'ont:DataSet'})
-        # doc.wasAttributedTo(lost, this_script)
-        # doc.wasGeneratedBy(lost, get_lost, endTime)
-        # doc.wasDerivedFrom(lost, resource, get_lost, get_lost, get_lost)
-        #
-        # found = doc.entity('dat:alice_bob#found',
-        #                    {prov.model.PROV_LABEL: 'Animals Found', prov.model.PROV_TYPE: 'ont:DataSet'})
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
         doc.wasDerivedFrom(output, resource, this_run, this_run, this_run)

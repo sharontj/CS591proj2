@@ -153,7 +153,7 @@ class education_trans_avg(dml.Algorithm):
         this_run = doc.activity('log:a'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
 
-        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.education_trans_avg',
+        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#education_trans_avg',
             { prov.model.PROV_LABEL:'education_trans_avg', prov.model.PROV_TYPE: 'ont:DataSet'})
 
 

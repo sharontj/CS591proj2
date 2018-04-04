@@ -24,43 +24,9 @@ class average_rent_zip(dml.Algorithm):
 
         repo.dropCollection("average_rent_zip")
         repo.createCollection("average_rent_zip")
-        # # loads fire data
-        # repo.dropCollection("fire_count")
-        # repo.createCollection("fire_count")
-        # fire = repo['yuxiao_yzhang11.fire']
-        # group = {
-        #     '_id': "$Zip",
-        #     'count': {'$sum': 1}
-        # }
-
-        # fireCount = fire.aggregate([
-        #     {
-        #         '$group': group
-        #     }
-        # ])
-
-        # repo['yuxiao_yzhang11.fire_count'].insert(fireCount)
-
-
-
-        # loads rental data
-
 
         rental = repo['alyu_sharontj_yuxiao_yzhang11.rental'].find()
-        month_keys= ["2017-01","2017-02","2017-03","2017-04","2017-05","2017-06","2017-07","2017-08","2017-09","2017-10","2017-11","2017-12"]
-        
-        
-
-        
-        # for i in rental:
-        #   #for k in month_keys:
-
-        #     print("month is")
-        #     print(i["2017-01"])
-
-
-        
-
+        month_keys = ["2017-01","2017-02","2017-03","2017-04","2017-05","2017-06","2017-07","2017-08","2017-09","2017-10","2017-11","2017-12"]
 
         for i in rental:
             rent_sum = 0
@@ -76,8 +42,7 @@ class average_rent_zip(dml.Algorithm):
 
             rent_average = rent_sum /12.0   
             rental_zip_price["Average"] = rent_average
-            # print("i am here !!!!!")
-            # print(rental_zip_price)
+
             repo['alyu_sharontj_yuxiao_yzhang11.average_rent_zip'].insert(rental_zip_price)
 
 
@@ -106,14 +71,13 @@ class average_rent_zip(dml.Algorithm):
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
 
-        resource2 = doc.entity('dat:yuxiao_yzhang11#rental',
-                               {'prov:label': 'Zillow', prov.model.PROV_TYPE: 'ont:DataResource',
-                                'ont:Extension': 'csv'})
+        resource = doc.entity('dat:yuxiao_yzhang11#rental',
+                               {'prov:label': 'rental', prov.model.PROV_TYPE: 'ont:DataResource'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
 
-        doc.usage(this_run, resource2, startTime, None,
+        doc.usage(this_run, resource, startTime, None,
                   {prov.model.PROV_TYPE: 'ont:Retrieval', })
 
         output = doc.entity('dat:yuxiao_yzhang11.average_rent_zip',
@@ -122,12 +86,12 @@ class average_rent_zip(dml.Algorithm):
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
         doc.wasAssociatedWith(this_run, this_script)
-        doc.used(this_run, resource2, startTime)
+        doc.used(this_run, resource, startTime)
 
 
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
-        doc.wasDerivedFrom(output, resource2, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output, resource, this_run, this_run, this_run)
 
         repo.logout()
 

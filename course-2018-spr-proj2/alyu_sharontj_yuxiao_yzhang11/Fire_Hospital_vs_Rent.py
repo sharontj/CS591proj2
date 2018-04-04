@@ -7,7 +7,7 @@ import uuid
 import csv
 import numpy
 
-# from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
+from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
 
 
 
@@ -26,34 +26,34 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        def union(R, S):
-            return R + S
-
-        def difference(R, S):
-            return [t for t in R if t not in S]
-
-        def intersect(R, S):
-            return [t for t in R if t in S]
-
-        def project(R, p):
-            return [p(t) for t in R]
-
-        def select(R, s):
-            return [t for t in R if s(t)]
-
-        def product(R, S):
-            return [(t, u) for t in R for u in S]
-
-        def aggregate(R, f):
-            keys = {r[0] for r in R}
-            return [(key, f([v for (k, v) in R if k == key])) for key in keys]
-
-        def map(f, R):
-            return [t for (k, v) in R for t in f(k, v)]
-
-        def reduce(f, R):
-            keys = {k for (k, v) in R}
-            return [f(k1, [v for (k2, v) in R if k1 == k2]) for k1 in keys]
+        # def union(R, S):
+        #     return R + S
+        #
+        # def difference(R, S):
+        #     return [t for t in R if t not in S]
+        #
+        # def intersect(R, S):
+        #     return [t for t in R if t in S]
+        #
+        # def project(R, p):
+        #     return [p(t) for t in R]
+        #
+        # def select(R, s):
+        #     return [t for t in R if s(t)]
+        #
+        # def product(R, S):
+        #     return [(t, u) for t in R for u in S]
+        #
+        # def aggregate(R, f):
+        #     keys = {r[0] for r in R}
+        #     return [(key, f([v for (k, v) in R if k == key])) for key in keys]
+        #
+        # def map(f, R):
+        #     return [t for (k, v) in R for t in f(k, v)]
+        #
+        # def reduce(f, R):
+        #     keys = {k for (k, v) in R}
+        #     return [f(k1, [v for (k2, v) in R if k1 == k2]) for k1 in keys]
 
 
         '''get hospital_count = (zipcode,hospital_count) from db.alyu_sharontj_yuxiao_yzhang11.hospital'''
@@ -63,14 +63,11 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
         hospitalDB=repo['alyu_sharontj_yuxiao_yzhang11.hospital']
         cursor = hospitalDB.find()
         for info in cursor:
-            street=info['street']
+            street = info['street']
             tmp = street.split(",")[2].split(" ")[2]
             zip1.append(tmp)
 
         hospital_count = aggregate(project(zip1,lambda t: (t,1)),sum)
-
-        # print('i m hospital count')
-        # print(hospital_count)
 
 
         '''get fire_count = (zipcode,fire_count) from db.alyu_sharontj_yuxiao_yzhang11.fire_count'''
@@ -81,9 +78,6 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
         for info in cursor:
             tmp = (info['_id'], info['count']/3)
             fire_count.append(tmp)
-
-        # print('i m fire count')
-        # print(fire_count)
 
 
         '''get average_rent = (zipcode,average) from db.alyu_sharontj_yuxiao_yzhang11.average_rent_zip'''
@@ -97,11 +91,6 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
             tmp2 = (info['Zip'])
             zip_rent.append(tmp1)
             zip2.append(tmp2)
-
-
-        # print(zip2)
-        # print('i m zip rent')
-        # print(zip_rent)
 
 
         '''combine hospital_count = (zipcode,hospital_count)  with fire_count = (zipcode,fire_count)
@@ -122,9 +111,6 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
         differ1 = difference(fire_zips,hospital_zips)
         differ2 = difference(zipcode_list, fire_zips)
 
-        # differ2 = difference(hospital_zips,fire_zips)
-        # print(differ1)
-        # print(differ2)
 
         ratio_list=[]
         for i in fire_hospital_1:
@@ -145,25 +131,17 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
             tmp = (i,mu-3*sigma)
             fire_hospital_3.append(tmp)
 
-        # print(fire_hospital_1)
-        #
-        # print(fire_hospital_2)
 
         fire_hospital_ = union(fire_hospital_1,fire_hospital_2)
         fire_hospital = union(fire_hospital_, fire_hospital_3)
 
         fire_hospital_vs_rent = project(select(product(fire_hospital,zip_rent), lambda t: t[0][0] == t[1][0]), lambda t: (t[0][0], t[0][1], t[1][1]))
 
-        # print('i m fire hospital')
-        # print(fire_hospital)
-        # print('i m fire hospital vs rent')
-        # print(fire_hospital_vs_rent)
-
 
         repo.dropCollection("Fire_Hospital_vs_Rent")
         repo.createCollection("Fire_Hospital_vs_Rent")
-        for k,v,s in fire_hospital_vs_rent:
-            oneline={'Zipcode': k, 'fire/hospital': v,'average rent':s }
+        for k, v, s in fire_hospital_vs_rent:
+            oneline = {'Zipcode': k, 'fire/hospital': v, 'average rent': s}
             repo['alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent'].insert_one(oneline)
 
 
@@ -213,7 +191,7 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
         this_run = doc.activity('log:a'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
 
-        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent',
+        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#Fire_Hospital_vs_Rent',
             { prov.model.PROV_LABEL:'Fire_Hospital_vs_Rent', prov.model.PROV_TYPE: 'ont:DataSet'})
 
 

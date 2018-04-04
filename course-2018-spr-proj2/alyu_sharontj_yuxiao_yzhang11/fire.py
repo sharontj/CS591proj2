@@ -86,29 +86,39 @@ class fire(dml.Algorithm):
 
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#fire',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
-        this_script2 = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#fire_count',
-                                {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
+        # this_script2 = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#fire_count',
+        #                         {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
-        resource = doc.entity('dat:2013fireincident_anabos2',
-                              {'prov:label': '311, Service Requests', prov.model.PROV_TYPE: 'ont:DataResource',
+        resource1 = doc.entity('dat:2013fireincident_anabos2',
+                              {'prov:label': 'fire', prov.model.PROV_TYPE: 'ont:DataResource',
+                               'ont:Extension': 'json'})
+        resource2 = doc.entity('dat:2014fireincident_anabos2',
+                              {'prov:label': 'fire', prov.model.PROV_TYPE: 'ont:DataResource',
+                               'ont:Extension': 'json'})
+        resource3 = doc.entity('dat:2015fireincident_anabos2',
+                              {'prov:label': 'fire', prov.model.PROV_TYPE: 'ont:DataResource',
                                'ont:Extension': 'json'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
-        doc.usage(this_run, resource, startTime, None,
-                  {prov.model.PROV_TYPE: 'ont:Retrieval',})
+        doc.usage(this_run, resource1, startTime, None,
+                  {prov.model.PROV_TYPE: 'ont:Retrieval'})
 
-        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.fire', {prov.model.PROV_LABEL:'fire', prov.model.PROV_TYPE:'ont:DataSet'})
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#fire', {prov.model.PROV_LABEL:'fire', prov.model.PROV_TYPE:'ont:DataSet'})
 
-        # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
-        #
+
         doc.wasAssociatedWith(this_run, this_script)
-        doc.wasAssociatedWith(this_run, this_script2)
-        doc.used(this_run, resource, startTime)
+        # doc.wasAssociatedWith(this_run, this_script2)
+        doc.used(this_run, resource1, startTime)
+        doc.used(this_run, resource2, startTime)
+        doc.used(this_run, resource3, startTime)
+
 
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
-        doc.wasDerivedFrom(output, resource, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output, resource1, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output, resource2, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output, resource3, this_run, this_run, this_run)
 
         repo.logout()
 

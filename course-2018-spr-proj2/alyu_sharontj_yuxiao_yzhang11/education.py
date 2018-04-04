@@ -19,7 +19,6 @@ class education(dml.Algorithm):
         client = dml.pymongo.MongoClient()
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
-        #http://bostonopendata-boston.opendata.arcgis.com/datasets/de08c6fe69c942509089e6db98c716a3_0.geojson
 
         url = 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/Colleges_and_Universities.geojson'
 
@@ -30,11 +29,8 @@ class education(dml.Algorithm):
         repo.dropCollection("education") #name of the data link: e.g. station_links
         repo.createCollection("education")
         repo['alyu_sharontj_yuxiao_yzhang11.education'].insert_many(r['features'])    #insert data into database?
-        repo['alyu_sharontj_yuxiao_yzhang11.education'].metadata({'complete':True})
-        # print(repo['alyu_sharontj_yuxiao_yzhang11.education'].metadata())
+        repo['alyu_sharontj_yuxiao_yzhang11.education'].metadata({'complete': True})
 
-
-        # repo.logout()
 
         endTime = datetime.datetime.now()
 
@@ -58,19 +54,27 @@ class education(dml.Algorithm):
         doc.add_namespace('log', 'http://datamechanics.io/log/') # The event log.
         doc.add_namespace('bdp', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/')
         #http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/Colleges_and_Universities.geojson
-        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#education', {prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})#change to file name
-        resource = doc.entity('bdp:Colleges_and_Universities', {'prov:label':'College_University', prov.model.PROV_TYPE:'ont:DataResource', 'ont:Extension':'geojson'})
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#education',
+                                {prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'],
+                                 'ont:Extension': 'py'})#change to file name
+        resource = doc.entity('bdp:Colleges_and_Universities',
+                              {'prov:label': 'College_University',
+                               prov.model.PROV_TYPE: 'ont:DataResource',
+                               'ont:Extension': 'geojson'})
         get_TS = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime)  #TS= traffic Signals
 
         doc.wasAssociatedWith(get_TS, this_script)
         doc.usage(get_TS, resource, startTime, None,
-                  {prov.model.PROV_TYPE:'ont:Retrieval',
-                 # 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'
-                  }
+                  {prov.model.PROV_TYPE: 'ont:Retrieval'}
                   )
 
 
-        TS = doc.entity('alg:alyu_sharontj_yuxiao_yzhang11#education', {prov.model.PROV_LABEL:'College_University', prov.model.PROV_TYPE:'ont:DataSet'})
+        TS = doc.entity('alg:alyu_sharontj_yuxiao_yzhang11#education',
+                        {prov.model.PROV_LABEL:'College_University',
+                         prov.model.PROV_TYPE:'ont:DataSet'})
+
+
+
         doc.wasAttributedTo(TS, this_script)
         doc.wasGeneratedBy(TS, get_TS, endTime)
         doc.wasDerivedFrom(TS, resource, get_TS, get_TS, get_TS)

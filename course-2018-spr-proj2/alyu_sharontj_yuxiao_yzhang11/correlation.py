@@ -22,9 +22,6 @@ class correlation(dml.Algorithm):
         client = dml.pymongo.MongoClient()
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
-        #http://bostonopendata-boston.opendata.arcgis.com/datasets/de08c6fe69c942509089e6db98c716a3_0.geojson
-
-
 
 
         repo.dropCollection("correlation") #name of the data link: e.g. station_links
@@ -60,20 +57,10 @@ class correlation(dml.Algorithm):
             x1 += [i["fire/hospital"]]
             y1 += [i["average rent"]]
 
-        corr_fire_hosp_rent= corr(x1,y1)
-        print("corr fire hosp rent", corr_fire_hosp_rent)
+        corr_fire_hosp_rent = corr(x1, y1)
+        # print("corr fire hosp rent", corr_fire_hosp_rent)
         x2 = []
         y2 = []
-        sum_no_garden_rent = 0
-        counter = 0
-        # for i in garden_rent:
-        #     if (i["garden_count"] == 0):
-        #         sum_no_garden_rent += i["Average"]
-        #         counter += 1
-        # average_no_garden_rent = sum_no_garden_rent/counter
-        #
-        # x2 += [0]
-        # y2 += [average_no_garden_rent]
 
 
         for i in garden_rent:
@@ -81,10 +68,10 @@ class correlation(dml.Algorithm):
             x2 += [i["garden_count"]]
             y2 += [i["Average"]]
 
-        print("garden vs rent")
+        # print("garden vs rent")
 
         corr_garden_rent = corr(x2,y2)
-        print(corr_garden_rent)
+        # print(corr_garden_rent)
 
         x3 = []
         y3 = []
@@ -92,14 +79,14 @@ class correlation(dml.Algorithm):
             x3 += [i["edu_count"]]
             y3 += [i["rent"]]
         corr_edu_rent = corr(x3,y3)
-        print("corr edu rent ", corr_edu_rent)
-        print()
+        # print("corr edu rent ", corr_edu_rent)
+        # print()
 
         c_sum = -corr_fire_hosp_rent+corr_edu_rent+corr_garden_rent
         weight_fire_hosp_rent = -corr_fire_hosp_rent/c_sum
         weight_edu_rent = corr_edu_rent/c_sum
         weight_garden_rent = corr_garden_rent/c_sum
-        print()
+        # print()
 
         edu_rent = {}
         edu_rent["name"] = "edu_rent"
@@ -123,20 +110,6 @@ class correlation(dml.Algorithm):
         repo['alyu_sharontj_yuxiao_yzhang11.correlation'].insert(gard_rent)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         endTime = datetime.datetime.now()
 
         return {"start": startTime, "end": endTime}
@@ -149,8 +122,7 @@ class correlation(dml.Algorithm):
             document describing that invocation event.
             '''
 
-        # Set up the database connection.
-        # Set up the database connection.
+
         client = dml.pymongo.MongoClient()
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
@@ -181,7 +153,7 @@ class correlation(dml.Algorithm):
         this_run = doc.activity('log:a' + str(uuid.uuid4()), startTime,
                                 endTime)  # , 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
-        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.correlation',
+        output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#correlation',
                             {prov.model.PROV_LABEL: 'correlation', prov.model.PROV_TYPE: 'ont:DataSet'})
 
         doc.wasAssociatedWith(this_run, this_script)

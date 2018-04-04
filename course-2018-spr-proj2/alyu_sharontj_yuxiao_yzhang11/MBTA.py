@@ -60,14 +60,15 @@ class MBTA(dml.Algorithm):
         doc.add_namespace('bdp', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/')
         #http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/Colleges_and_Universities.geojson
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#MBTA', {prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})#change to file name
-        resource = doc.entity('bdp:MBTA_Stops', {'prov:label':'MBTA_Stops', prov.model.PROV_TYPE:'ont:DataResource', 'ont:Extension':'json'})
+        resource = doc.entity('bdp:MBTA_Stops',
+                              {'prov:label':'MBTA_Stops',
+                               prov.model.PROV_TYPE:'ont:DataResource',
+                               'ont:Extension':'json'})
         get_TS = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime)  #TS= traffic Signals
 
         doc.wasAssociatedWith(get_TS, this_script)
         doc.usage(get_TS, resource, startTime, None,
-                  {prov.model.PROV_TYPE:'ont:Retrieval',
-                 # 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'
-                  }
+                  {prov.model.PROV_TYPE: 'ont:Retrieval'}
                   )
 
 

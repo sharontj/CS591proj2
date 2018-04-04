@@ -88,35 +88,16 @@ class hubway(dml.Algorithm):
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
         doc.usage(this_run, resource, startTime, None,
-                  {prov.model.PROV_TYPE: 'ont:Retrieval',})
+                  {prov.model.PROV_TYPE: 'ont:Retrieval'})
 
-        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.hubway', {prov.model.PROV_LABEL:'hubway', prov.model.PROV_TYPE:'ont:DataSet'})
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#hubway',
+                             {prov.model.PROV_LABEL:'hubway',
+                              prov.model.PROV_TYPE:'ont:DataSet'})
 
-        # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
-        #
+
         doc.wasAssociatedWith(this_run, this_script)
         doc.used(this_run, resource, startTime)
-        # doc.wasAssociatedWith(get_lost, this_script)
-        # doc.usage(get_found, resource, startTime, None,
-        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
-        #            'ont:Query': '?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'
-        #            }
-        #           )
-        #
-        # doc.usage(get_lost, resource, startTime, None,
-        #           {prov.model.PROV_TYPE: 'ont:Retrieval',
-        #            'ont:Query': '?type=Animal+Lost&$select=type,latitude,longitude,OPEN_DT'
-        #            }
-        #           )
 
-        # lost = doc.entity('dat:alice_bob#lost',
-        #                   {prov.model.PROV_LABEL: 'Animals Lost', prov.model.PROV_TYPE: 'ont:DataSet'})
-        # doc.wasAttributedTo(lost, this_script)
-        # doc.wasGeneratedBy(lost, get_lost, endTime)
-        # doc.wasDerivedFrom(lost, resource, get_lost, get_lost, get_lost)
-        #
-        # found = doc.entity('dat:alice_bob#found',
-        #                    {prov.model.PROV_LABEL: 'Animals Found', prov.model.PROV_TYPE: 'ont:DataSet'})
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
         doc.wasDerivedFrom(output, resource, this_run, this_run, this_run)

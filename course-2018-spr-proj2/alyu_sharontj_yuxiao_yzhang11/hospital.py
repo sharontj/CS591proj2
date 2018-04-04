@@ -19,7 +19,6 @@ class hospital(dml.Algorithm):
         client = dml.pymongo.MongoClient()
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
-        #http://bostonopendata-boston.opendata.arcgis.com/datasets/de08c6fe69c942509089e6db98c716a3_0.geojson
 
         url = 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/hospitalsgeo.json'
 
@@ -66,11 +65,9 @@ class hospital(dml.Algorithm):
 
         doc.wasAssociatedWith(get_TS, this_script)
         doc.usage(get_TS, resource, startTime, None,
-                  {prov.model.PROV_TYPE:'ont:Retrieval',
-                 # 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'
+                  {prov.model.PROV_TYPE:'ont:Retrieval'
                   }
                   )
-
 
         TS = doc.entity('alg:alyu_sharontj_yuxiao_yzhang11#hospital', {prov.model.PROV_LABEL:'hospital', prov.model.PROV_TYPE:'ont:DataSet'})
         doc.wasAttributedTo(TS, this_script)

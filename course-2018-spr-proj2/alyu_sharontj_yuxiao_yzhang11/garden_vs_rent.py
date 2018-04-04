@@ -26,9 +26,6 @@ class garden_vs_rent(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-
-
-
         garden_count = repo['alyu_sharontj_yuxiao_yzhang11.garden_count']
         average_rent = repo['alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
 
@@ -50,7 +47,6 @@ class garden_vs_rent(dml.Algorithm):
 
 
             if (garden_count.find_one({"_id": rent_zip}) != None):
-                # print(garden_count.find_one({"_id": rent_zip})['count'])
 
                 garden_vs_rent["garden_count"] = garden_count.find_one({"_id": rent_zip})['count']
             else:
@@ -87,35 +83,29 @@ class garden_vs_rent(dml.Algorithm):
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#garden_vs_rent',
                                 {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
-        resource = doc.entity('dat:2013fireincident_anabos2',
-                              {'prov:label': '311, Service Requests', prov.model.PROV_TYPE: 'ont:DataResource',
-                               'ont:Extension': 'json'})
 
-        garden_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden',
-                                  {prov.model.PROV_LABEL: 'garden',
+        garden_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden_count',
+                                  {prov.model.PROV_LABEL: 'garden_count',
                                    prov.model.PROV_TYPE: 'ont:DataSet'})
 
         rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.average_rent_zip',
-                                  {prov.model.PROV_LABEL: 'garden',
+                                  {prov.model.PROV_LABEL: 'average_rent_zip',
                                    prov.model.PROV_TYPE: 'ont:DataSet'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
 
-        doc.usage(this_run, resource, startTime, None,
-                  {prov.model.PROV_TYPE: 'ont:Retrieval',})
 
-        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.garden_vs_rent', {prov.model.PROV_LABEL:'fire', prov.model.PROV_TYPE:'ont:DataSet'})
+
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#garden_vs_rent', {prov.model.PROV_LABEL:'garden_vs_rent', prov.model.PROV_TYPE:'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
         doc.wasAssociatedWith(this_run, this_script)
-        doc.used(this_run, resource, startTime)
         doc.used(this_run, garden_input, startTime)
         doc.used(this_run, rent_input, startTime)
 
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
-        doc.wasDerivedFrom(output, resource, this_run, this_run, this_run)
         doc.wasDerivedFrom(output, garden_input, this_run, this_run, this_run)
         doc.wasDerivedFrom(output, rent_input, this_run, this_run, this_run)
 

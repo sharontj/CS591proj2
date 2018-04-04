@@ -9,14 +9,16 @@ import csv
 import numpy
 import statistics as stats
 
-# from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
+from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
 
 
 
 class Constraint_Solver(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
-    reads = ['alyu_sharontj_yuxiao_yzhang11.garden', 'alyu_sharontj_yuxiao_yzhang11.education',\
-             'alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent','alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
+    reads = ['alyu_sharontj_yuxiao_yzhang11.garden',
+             'alyu_sharontj_yuxiao_yzhang11.education',
+             'alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent',
+             'alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
     writes = ['alyu_sharontj_yuxiao_yzhang11.Result']
 
     @staticmethod
@@ -29,35 +31,35 @@ class Constraint_Solver(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        def union(R, S):
-            return R + S
-
-        def difference(R, S):
-            return [t for t in R if t not in S]
-
-        def intersect(R, S):
-            return [t for t in R if t in S]
-
-        def project(R, p):
-            return [p(t) for t in R]
-
-        def select(R, s):
-            return [t for t in R if s(t)]
-
-        def product(R, S):
-            return [(t, u) for t in R for u in S]
-
-        def aggregate(R, f):
-            keys = {r[0] for r in R}
-            return [(key, f([v for (k, v) in R if k == key])) for key in keys]
-
-        def map(f, R):
-            return [t for (k, v) in R for t in f(k, v)]
-
-        def reduce(f, R):
-            keys = {k for (k, v) in R}
-            return [f(k1, [v for (k2, v) in R if k1 == k2]) for k1 in keys]
-
+        # def union(R, S):
+        #     return R + S
+        #
+        # def difference(R, S):
+        #     return [t for t in R if t not in S]
+        #
+        # def intersect(R, S):
+        #     return [t for t in R if t in S]
+        #
+        # def project(R, p):
+        #     return [p(t) for t in R]
+        #
+        # def select(R, s):
+        #     return [t for t in R if s(t)]
+        #
+        # def product(R, S):
+        #     return [(t, u) for t in R for u in S]
+        #
+        # def aggregate(R, f):
+        #     keys = {r[0] for r in R}
+        #     return [(key, f([v for (k, v) in R if k == key])) for key in keys]
+        #
+        # def map(f, R):
+        #     return [t for (k, v) in R for t in f(k, v)]
+        #
+        # def reduce(f, R):
+        #     keys = {k for (k, v) in R}
+        #     return [f(k1, [v for (k2, v) in R if k1 == k2]) for k1 in keys]
+        #
 
         '''get rent = (zipcode,rent) from db.alyu_sharontj_yuxiao_yzhang11.average_rent_zip'''
 
@@ -77,12 +79,12 @@ class Constraint_Solver(dml.Algorithm):
         edudb = repo['alyu_sharontj_yuxiao_yzhang11.education']
         educur = edudb.find()
         for info in educur:
-            edu_id= info['properties']['SchoolId']
-            if (edu_id != "0"):
+            edu_id = info['properties']['SchoolId']
+            if edu_id != "0":
                 address = info['properties']['Address']
                 edu_zip = address[-5:]
                 schoolinfo.append((edu_zip, 1))
-        eduinfo= aggregate(schoolinfo, sum)
+        eduinfo = aggregate(schoolinfo, sum)
         edudict = dict(eduinfo)
 
 
@@ -121,15 +123,12 @@ class Constraint_Solver(dml.Algorithm):
             high = mean + 3*std
             return low, high
 
-
-
-
-        zipcode_list=["02110","02210","02132","02109","02199","02108","02113", "02116","02163","02136","02111","02129", "02114", \
+        zipcode_list = ["02110","02210","02132","02109","02199","02108","02113", "02116","02163","02136","02111","02129", "02114", \
                       "02131", "02118", "02130", "02127", "02135", "02126", "02125", "02215", "02134", "02122", "02128", "02115",\
                       "02124", "02120", "02119", "02121"]
 
         scorelist = []
-        weight = {"rent": 0.5, "edu": 0.3,"fire": 0.1, "garden": 0.1}
+        weight = {"rent": 0.5, "edu": 0.3, "fire": 0.1, "garden": 0.1}
 
         def normalize(value, low, high):
             return float((value-low)/(high-low))
@@ -138,9 +137,9 @@ class Constraint_Solver(dml.Algorithm):
             if(z in dict.keys()):
                 low,high = get_boundary(dict)
                 if(dict[z] <= high and  dict[z] >= low):
-                    print("original"+str(dict[z]))
+                    # print("original"+str(dict[z]))
                     n = normalize(dict[z], low,high) * 100
-                    print("normal"+str(n))
+                    # print("normal"+str(n))
                     score2 = n*weight[factor]
                 else:
                     score2 = 0
@@ -148,41 +147,29 @@ class Constraint_Solver(dml.Algorithm):
                 score2 = 0
             return score2
 
-
-
         for zipcode in zipcode_list:
-            print('rent')
+            # print('rent')
             rentscore = getscore(zipcode, rentdict,'rent')
-            print('edu')
+            # print('edu')
             eduscore = getscore(zipcode, edudict, 'edu')
-            print('fire')
-            firescore = getscore(zipcode, firedict,'fire')
-            print('garden')
+            # print('fire')
+            firescore = getscore(zipcode, firedict, 'fire')
+            # print('garden')
             gardenscore = getscore(zipcode, gardendict, 'garden')
 
             score = rentscore + firescore + eduscore + gardenscore
 
             scorelist.append((zipcode, score))
 
-
-
-        # def Takesecond(elem):
-        #     return elem[1]
-
-
-        results = sorted(scorelist,key=lambda x: x[1],reverse=True)
-        # print("result is ")
-        # print(results)
-        #results = scorelist.sort(key=Takesecond, reverse=True)
+        results = sorted(scorelist, key=lambda x: x[1], reverse=True)
 
         repo.dropCollection("Result")
         repo.createCollection("Result")
 
         for k,v in results:
-            oneline={'Zipcode': k, 'score': v}
+            oneline = {'Zipcode': k, 'score': v}
             print(oneline)
             repo['alyu_sharontj_yuxiao_yzhang11.Result'].insert_one(oneline)
-
 
         endTime = datetime.datetime.now()
 
@@ -212,8 +199,6 @@ class Constraint_Solver(dml.Algorithm):
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#Constraint_Solver',
             { prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})
 
-# ['alyu_sharontj_yuxiao_yzhang11.garden', 'alyu_sharontj_yuxiao_yzhang11.education',\
-#              'alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent','alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
         rent_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11.average_rent_zip',
                                 {prov.model.PROV_LABEL:'average_rent_zip',
                                  prov.model.PROV_TYPE:'ont:DataSet'})
