@@ -11,7 +11,7 @@ from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
 
 class education_trans_avg(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
-    reads = ['alyu_sharontj_yuxiao_yzhang11.education', 'alyu_sharontj_yuxiao_yzhang11.hubway'] #read the data of roads and trafficsignals from mongo
+    reads = ['alyu_sharontj_yuxiao_yzhang11.education', 'alyu_sharontj_yuxiao_yzhang11.hubway','alyu_sharontj_yuxiao_yzhang11.MBTA'] #read the data of roads and trafficsignals from mongo
     writes = ['alyu_sharontj_yuxiao_yzhang11.education_trans_avg']
 
 

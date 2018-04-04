@@ -44,13 +44,13 @@ class garden_vs_rent(dml.Algorithm):
         for i in rent_cur:
             garden_vs_rent= {}
             rent_zip = i["Zip"]
-            print("rent zip", rent_zip)
+            # print("rent zip", rent_zip)
             garden_vs_rent["Zip"] = rent_zip
             garden_vs_rent["Average"] = i["Average"]
 
 
             if (garden_count.find_one({"_id": rent_zip}) != None):
-                print(garden_count.find_one({"_id": rent_zip})['count'])
+                # print(garden_count.find_one({"_id": rent_zip})['count'])
 
                 garden_vs_rent["garden_count"] = garden_count.find_one({"_id": rent_zip})['count']
             else:
@@ -59,48 +59,7 @@ class garden_vs_rent(dml.Algorithm):
             repo['alyu_sharontj_yuxiao_yzhang11.garden_vs_rent'].insert(garden_vs_rent)
 
 
-
-
-
-        # gardeninfo = []
-        # garden_cur = garden_count.find()  # filter not work
-        # for info in garden_cur:
-        #     zip = info['_id']
-        #     count = info['count']
-        #     #print("zip is", zip)
-        #     #print("count is ", count)
-        #
-        #     gardeninfo.append((zip,count))
-        # #print("garden ", gardeninfo)
-        #
-        # rent_info = []
-        # rent_cur = average_rent.find()
-        # for info in rent_cur:
-        #     zip = info['Zip']
-        #     average = info['Average']
-        #     #print("zip is", zip)
-        #     #print("average is ", average)
-        #
-        #     rent_info.append((zip, average))
-        # #print("rent info is ", rent_info)
-        # def product(R, S):
-        #     return [(t, u) for t in R for u in S]
-        #
-        # def select(R, s):
-        #     return [t for t in R if s(t)]
-        #
-        # def project(R, p):
-        #     return [p(t) for t in R]
-        #
-        # product_rent_garden = project(select(product(rent_info,gardeninfo), lambda t: t[0][0] == t[1][0]), lambda t: (t[0][0], t[0][1],t[1][1]) )
-        # print("printing!!!!!")
-        # print(product_rent_garden)
-
-
-
-
-        #repo['alyu_sharontj_yuxiao_yzhang11.fire_count'].insert(fireCount)
-        print("INNN garden_vs_rent")
+        # print("INNN garden_vs_rent")
         endTime = datetime.datetime.now()
 
         return {"start": startTime, "end": endTime}
