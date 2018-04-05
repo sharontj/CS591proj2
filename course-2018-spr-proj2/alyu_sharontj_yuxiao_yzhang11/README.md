@@ -134,25 +134,11 @@ Number of transport vs Education
 
 We calculate the score of each zipcode in order to get the top5 choices to invest.
 
-####First, we define several symbols as follows:
+#### First, we define several symbols as follows:
 
-$S$  = the score of a certain zip code
 
-$N_g$ = Number of gardens in the zip code
 
-$W_g$ = Weight of gardens 
-
-$N_s$ = Numbers of schools in the zip code
-
-$W_s$ = Weight of colleges and universities  
-
-$N_t$ = Number of MBTA stops and hubway stops in the zip code
-
-$W_t$ = weight of transportations
-
-$R$ = average rent in the zip code
-
-$W_r$ = Weight of Average Rent 
+![define](picture/define.png)
 
 
 
@@ -167,7 +153,9 @@ we calculate the correlation coefficient and corresponding weight for the four m
 |      Rent vs Education      |   0.5418132534754234    | 0.5418132534754234  |
 |       Rent vs Garden        |   0.04038425343016952   | 0.05082871879198115 |
 |    Rent vs Fire/Hospital    |  -0.32365265581635083   | 0.40735802773259544 |
-| Education vs transportation |         0.04157         |                     |
+| Education vs transportation |         0.04157         |          0          |
+
+  
 
 ####Third, we calculate the final score for each zip code by the  formula:
 

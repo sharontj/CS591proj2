@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c97f2cb9-7f4d-42cf-84b9-b473e20de784" name="Default" comment="" />
+    <list default="true" id="c97f2cb9-7f4d-42cf-84b9-b473e20de784" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Fire:HospitalvsRent-2718948.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Fire:HospitalvsRent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/FireHospital_Rent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/edu_rent-2718679.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/edu_rent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/edu_trans_avg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_rent.png" afterPath="" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,8 +89,8 @@
       <file leaf-file-name="Constraint_Solver.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="252" column="43" lean-forward="false" selection-start-line="252" selection-start-column="35" selection-end-line="252" selection-end-column="43" />
+            <state relative-caret-position="335">
+              <caret line="255" column="51" lean-forward="false" selection-start-line="255" selection-start-column="51" selection-end-line="255" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -824,8 +832,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="252" column="43" lean-forward="false" selection-start-line="252" selection-start-column="35" selection-end-line="252" selection-end-column="43" />
+        <state relative-caret-position="335">
+          <caret line="255" column="51" lean-forward="false" selection-start-line="255" selection-start-column="51" selection-end-line="255" selection-end-column="51" />
           <folding />
         </state>
       </provider>
