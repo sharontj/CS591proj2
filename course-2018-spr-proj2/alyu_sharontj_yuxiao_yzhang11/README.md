@@ -155,9 +155,11 @@ we calculate the correlation coefficient and corresponding weight for the four m
 |    Rent vs Fire/Hospital    |  -0.32365265581635083   | 0.40735802773259544 |
 | Education vs transportation |         0.04157         |          0          |
 
-  
 
-####Third, we calculate the final score for each zip code by the  formula:
+
+####Third,we calculate the final score for each zip code by the  formula
+
+Third, we calculate the final score for each zip code by the  formula:
 
 $S$ =  $N_gW_g+ N_sW_s+N_tW_t + RW_r$
 
