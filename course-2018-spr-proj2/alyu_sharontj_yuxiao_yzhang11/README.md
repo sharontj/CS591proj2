@@ -157,15 +157,13 @@ we calculate the correlation coefficient and corresponding weight for the four m
 
 
 
-####Third,we calculate the final score for each zip code by the  formula
+#### Third,we calculate the final score for each zip code by the  formula
 
-Third, we calculate the final score for each zip code by the  formula:
+![scoreformula](picture/scoreformula.png)
 
-$S$ =  $N_gW_g+ N_sW_s+N_tW_t + RW_r$
 
-Then we get what we want as follows:
 
- 
+Then we get what we want as follows: 
 
 #####                                       						   Scores Table
 
