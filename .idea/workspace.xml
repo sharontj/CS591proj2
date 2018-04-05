@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c97f2cb9-7f4d-42cf-84b9-b473e20de784" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alice_bob/example.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alice_bob/example.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Fire_Hospital_vs_Rent.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Fire_Hospital_vs_Rent.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/MBTA.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/MBTA.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/average_rent_zip.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/average_rent_zip.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/correlation.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/correlation.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_rent.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_rent.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_trans_avg.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_trans_avg.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/fire.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/fire.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hospital.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hospital.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hubway.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hubway.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/rental.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/rental.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/execute.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/execute.py" />
-      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/provenance.html" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/provenance.html" />
-    </list>
+    <list default="true" id="c97f2cb9-7f4d-42cf-84b9-b473e20de784" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,8 +81,8 @@
       <file leaf-file-name="Constraint_Solver.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="268" column="23" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+            <state relative-caret-position="290">
+              <caret line="252" column="43" lean-forward="false" selection-start-line="252" selection-start-column="35" selection-end-line="252" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -843,8 +824,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="268" column="23" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+        <state relative-caret-position="290">
+          <caret line="252" column="43" lean-forward="false" selection-start-line="252" selection-start-column="35" selection-end-line="252" selection-end-column="43" />
           <folding />
         </state>
       </provider>
