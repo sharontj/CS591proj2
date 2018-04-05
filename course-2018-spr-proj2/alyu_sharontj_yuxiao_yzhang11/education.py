@@ -70,10 +70,8 @@ class education(dml.Algorithm):
 
 
         TS = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#education',
-                        {prov.model.PROV_LABEL:'College_University',
-                         prov.model.PROV_TYPE:'ont:DataSet'})
-
-
+                        {prov.model.PROV_LABEL: 'education',
+                         prov.model.PROV_TYPE: 'ont:DataSet'})
 
         doc.wasAttributedTo(TS, this_script)
         doc.wasGeneratedBy(TS, get_TS, endTime)
@@ -84,9 +82,9 @@ class education(dml.Algorithm):
 
         return doc
 
-education.execute()
-doc = education.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+# education.execute()
+# doc = education.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof

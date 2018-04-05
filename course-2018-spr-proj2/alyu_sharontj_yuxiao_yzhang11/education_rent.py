@@ -125,7 +125,7 @@ class education_rent(dml.Algorithm):
                                   {prov.model.PROV_LABEL:'average_rent_zip',
                                    prov.model.PROV_TYPE:'ont:DataSet'})
 
-        this_run = doc.activity('log:a'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
+        this_run = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
 
         output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#education_rent',
@@ -148,9 +148,9 @@ class education_rent(dml.Algorithm):
 
 
 
-education_rent.execute()
-doc = education_rent.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+# education_rent.execute()
+# doc = education_rent.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof

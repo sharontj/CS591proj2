@@ -26,8 +26,6 @@ class correlation(dml.Algorithm):
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
 
-        repo.dropCollection("correlation") #name of the data link: e.g. station_links
-        repo.createCollection("correlation")
 
         fire_hosp_rent = repo['alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent'].find()
         garden_rent = repo['alyu_sharontj_yuxiao_yzhang11.garden_vs_rent'].find()
@@ -52,24 +50,25 @@ class correlation(dml.Algorithm):
             if stddev(x) * stddev(y) != 0:
                 return cov(x, y) / (stddev(x) * stddev(y))
 
-        x1= []
+        x1 = []
         y1 = []
+        corr_fire_hosp_rent = 0
         for i in fire_hosp_rent:
 
             x1 += [i["fire/hospital"]]
             y1 += [i["average rent"]]
 
+
         corr_fire_hosp_rent = corr(x1, y1)
         # print("corr fire hosp rent", corr_fire_hosp_rent)
+
         x2 = []
         y2 = []
-
-
         for i in garden_rent:
-
             x2 += [i["garden_count"]]
             y2 += [i["Average"]]
 
+        corr_garden_rent = 0
         # print("garden vs rent")
 
         corr_garden_rent = corr(x2,y2)
@@ -77,9 +76,11 @@ class correlation(dml.Algorithm):
 
         x3 = []
         y3 = []
+        corr_edu_rent = 0
         for i in edu_rent:
             x3 += [i["edu_count"]]
             y3 += [i["rent"]]
+
         corr_edu_rent = corr(x3,y3)
         # print("corr edu rent ", corr_edu_rent)
         # print()
@@ -94,6 +95,9 @@ class correlation(dml.Algorithm):
         edu_rent["name"] = "edu_rent"
         edu_rent["correlation"] = corr_edu_rent
         edu_rent["weight"] = weight_edu_rent
+
+        repo.dropCollection("correlation") #name of the data link: e.g. station_links
+        repo.createCollection("correlation")
 
         repo['alyu_sharontj_yuxiao_yzhang11.correlation'].insert(edu_rent)
 
@@ -154,11 +158,12 @@ class correlation(dml.Algorithm):
 
 
 
-        this_run = doc.activity('log:a' + str(uuid.uuid4()), startTime,
+        this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime,
                                 endTime)  # , 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
         output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#correlation',
-                            {prov.model.PROV_LABEL: 'correlation', prov.model.PROV_TYPE: 'ont:DataSet'})
+                            {prov.model.PROV_LABEL: 'correlation',
+                             prov.model.PROV_TYPE: 'ont:DataSet'})
 
         doc.wasAssociatedWith(this_run, this_script)
         doc.used(this_run, fire_h_rent_input, startTime)
@@ -174,9 +179,9 @@ class correlation(dml.Algorithm):
 
         return doc
 
-correlation.execute()
-doc = correlation.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+# correlation.execute()
+# doc = correlation.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 # eof

@@ -90,13 +90,13 @@ class fire(dml.Algorithm):
         #                         {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
 
         resource1 = doc.entity('dat:2013fireincident_anabos2',
-                              {'prov:label': 'fire', prov.model.PROV_TYPE: 'ont:DataResource',
+                              {'prov:label': 'fire1', prov.model.PROV_TYPE: 'ont:DataResource',
                                'ont:Extension': 'json'})
         resource2 = doc.entity('dat:2014fireincident_anabos2',
-                              {'prov:label': 'fire', prov.model.PROV_TYPE: 'ont:DataResource',
+                              {'prov:label': 'fire2', prov.model.PROV_TYPE: 'ont:DataResource',
                                'ont:Extension': 'json'})
         resource3 = doc.entity('dat:2015fireincident_anabos2',
-                              {'prov:label': 'fire', prov.model.PROV_TYPE: 'ont:DataResource',
+                              {'prov:label': 'fire3', prov.model.PROV_TYPE: 'ont:DataResource',
                                'ont:Extension': 'json'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
@@ -104,7 +104,12 @@ class fire(dml.Algorithm):
         doc.usage(this_run, resource1, startTime, None,
                   {prov.model.PROV_TYPE: 'ont:Retrieval'})
 
-        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#fire', {prov.model.PROV_LABEL:'fire', prov.model.PROV_TYPE:'ont:DataSet'})
+        output1 =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#fire',
+                              {prov.model.PROV_LABEL:'fire',
+                               prov.model.PROV_TYPE:'ont:DataSet'})
+        output2 =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#fire_count',
+                              {prov.model.PROV_LABEL:'fire_count',
+                               prov.model.PROV_TYPE:'ont:DataSet'})
 
 
         doc.wasAssociatedWith(this_run, this_script)
@@ -114,20 +119,28 @@ class fire(dml.Algorithm):
         doc.used(this_run, resource3, startTime)
 
 
-        doc.wasAttributedTo(output, this_script)
-        doc.wasGeneratedBy(output, this_run, endTime)
-        doc.wasDerivedFrom(output, resource1, this_run, this_run, this_run)
-        doc.wasDerivedFrom(output, resource2, this_run, this_run, this_run)
-        doc.wasDerivedFrom(output, resource3, this_run, this_run, this_run)
+        doc.wasAttributedTo(output1, this_script)
+        doc.wasGeneratedBy(output1, this_run, endTime)
+        doc.wasDerivedFrom(output1, resource1, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output1, resource2, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output1, resource3, this_run, this_run, this_run)
+
+        doc.wasAttributedTo(output2, this_script)
+        doc.wasGeneratedBy(output2, this_run, endTime)
+        doc.wasDerivedFrom(output2, resource1, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output2, resource2, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output2, resource3, this_run, this_run, this_run)
+
+
 
         repo.logout()
 
         return doc
 
 
-fire.execute()
-doc = fire.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+# fire.execute()
+# doc = fire.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof

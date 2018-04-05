@@ -18,7 +18,8 @@ class Constraint_Solver(dml.Algorithm):
     reads = ['alyu_sharontj_yuxiao_yzhang11.garden',
              'alyu_sharontj_yuxiao_yzhang11.education',
              'alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent',
-             'alyu_sharontj_yuxiao_yzhang11.average_rent_zip']
+             'alyu_sharontj_yuxiao_yzhang11.average_rent_zip',
+             'alyu_sharontj_yuxiao_yzhang11.correlation']
     writes = ['alyu_sharontj_yuxiao_yzhang11.Result']
 
     @staticmethod
@@ -128,7 +129,22 @@ class Constraint_Solver(dml.Algorithm):
                       "02124", "02120", "02119", "02121"]
 
         scorelist = []
-        weight = {"rent": 0.5, "edu": 0.3, "fire": 0.1, "garden": 0.1}
+
+        '''get correlation coefficience'''
+        weightinfo = []
+        corrdb = repo['alyu_sharontj_yuxiao_yzhang11.correlation']
+        corrcur = corrdb.find()
+        for info in corrcur:
+            factor = info['name']
+            weight = info['weight']
+            weightinfo.append((factor,weight))
+
+        weightinfo.append(('rent', 0.5))
+        weightdict = dict(weightinfo)
+        # print (gardendict)
+
+
+        # weight = {"rent": 0.5, "edu": 0.3, "fire": 0.1, "garden": 0.1}
 
         def normalize(value, low, high):
             return float((value-low)/(high-low))
@@ -140,7 +156,7 @@ class Constraint_Solver(dml.Algorithm):
                     # print("original"+str(dict[z]))
                     n = normalize(dict[z], low,high) * 100
                     # print("normal"+str(n))
-                    score2 = n*weight[factor]
+                    score2 = n*weightdict[factor]
                 else:
                     score2 = 0
             else:
@@ -149,13 +165,13 @@ class Constraint_Solver(dml.Algorithm):
 
         for zipcode in zipcode_list:
             # print('rent')
-            rentscore = getscore(zipcode, rentdict,'rent')
+            rentscore = getscore(zipcode, rentdict, 'rent')
             # print('edu')
-            eduscore = getscore(zipcode, edudict, 'edu')
+            eduscore = getscore(zipcode, edudict, 'edu_rent')
             # print('fire')
-            firescore = getscore(zipcode, firedict, 'fire')
+            firescore = getscore(zipcode, firedict, 'fire/hospital_rent')
             # print('garden')
-            gardenscore = getscore(zipcode, gardendict, 'garden')
+            gardenscore = getscore(zipcode, gardendict, 'garden_rent')
 
             score = rentscore + firescore + eduscore + gardenscore
 
@@ -212,10 +228,14 @@ class Constraint_Solver(dml.Algorithm):
                                    prov.model.PROV_TYPE:'ont:DataSet'})
 
         firehospital_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#Fire_Hospital_vs_Rent',
-                                  {prov.model.PROV_LABEL: 'firehospital_input',
+                                  {prov.model.PROV_LABEL: 'Fire_Hospital_vs_Rent',
                                    prov.model.PROV_TYPE: 'ont:DataSet'})
 
-        this_run = doc.activity('log:a'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
+        correlation_input = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#correlation',
+                                  {prov.model.PROV_LABEL: 'correlation',
+                                   prov.model.PROV_TYPE: 'ont:DataSet'})
+
+        this_run = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
 
         output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#Result',
@@ -227,6 +247,7 @@ class Constraint_Solver(dml.Algorithm):
         doc.used(this_run, education_input, startTime)
         doc.used(this_run, rent_input, startTime)
         doc.used(this_run, firehospital_input, startTime)
+        doc.used(this_run, correlation_input, startTime)
 
         doc.wasAttributedTo(output, this_script)
         doc.wasGeneratedBy(output, this_run, endTime)
@@ -234,6 +255,9 @@ class Constraint_Solver(dml.Algorithm):
         doc.wasDerivedFrom(output, education_input, this_run, this_run, this_run)
         doc.wasDerivedFrom(output, rent_input, this_run, this_run, this_run)
         doc.wasDerivedFrom(output, firehospital_input, this_run, this_run, this_run)
+        doc.wasDerivedFrom(output, correlation_input, this_run, this_run, this_run)
+
+
         repo.logout()
 
 
@@ -242,9 +266,9 @@ class Constraint_Solver(dml.Algorithm):
 
 
 
-Constraint_Solver.execute()
-doc = Constraint_Solver.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+# Constraint_Solver.execute()
+# doc = Constraint_Solver.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof

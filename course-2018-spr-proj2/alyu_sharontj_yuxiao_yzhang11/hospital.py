@@ -59,8 +59,13 @@ class hospital(dml.Algorithm):
         doc.add_namespace('bdp', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/')
         # http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/hospitalsgeo.json
 
-        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#hospital', {prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})#change to file name
-        resource = doc.entity('bdp:hospitalsgeo', {'prov:label':'hospital', prov.model.PROV_TYPE:'ont:DataResource', 'ont:Extension':'json'})
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#hospital',
+                                {prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'],
+                                 'ont:Extension':'py'})#change to file name
+        resource = doc.entity('bdp:hospitalsgeo',
+                              {'prov:label':'hospital',
+                               prov.model.PROV_TYPE:'ont:DataResource',
+                               'ont:Extension':'json'})
         get_TS = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime)  #TS= traffic Signals
 
         doc.wasAssociatedWith(get_TS, this_script)
@@ -69,7 +74,9 @@ class hospital(dml.Algorithm):
                   }
                   )
 
-        TS = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#hospital', {prov.model.PROV_LABEL:'hospital', prov.model.PROV_TYPE:'ont:DataSet'})
+        TS = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#hospital',
+                        {prov.model.PROV_LABEL:'hospital',
+                         prov.model.PROV_TYPE:'ont:DataSet'})
         doc.wasAttributedTo(TS, this_script)
         doc.wasGeneratedBy(TS, get_TS, endTime)
         doc.wasDerivedFrom(TS, resource, get_TS, get_TS, get_TS)
@@ -79,9 +86,9 @@ class hospital(dml.Algorithm):
 
         return doc
 
-hospital.execute()
-doc = hospital.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+# hospital.execute()
+# doc = hospital.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 # eof

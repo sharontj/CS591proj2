@@ -59,7 +59,9 @@ class MBTA(dml.Algorithm):
         doc.add_namespace('log', 'http://datamechanics.io/log/') # The event log.
         doc.add_namespace('bdp', 'http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/')
         #http://datamechanics.io/data/alyu_sharontj_yuxiao_yzhang11/Colleges_and_Universities.geojson
-        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#MBTA', {prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'], 'ont:Extension':'py'})#change to file name
+        this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#MBTA',
+                                {prov.model.PROV_TYPE:prov.model.PROV['SoftwareAgent'],
+                                 'ont:Extension':'py'})#change to file name
         resource = doc.entity('bdp:MBTA_Stops',
                               {'prov:label':'MBTA_Stops',
                                prov.model.PROV_TYPE:'ont:DataResource',
@@ -72,7 +74,9 @@ class MBTA(dml.Algorithm):
                   )
 
 
-        TS = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#MBTA', {prov.model.PROV_LABEL:'MBTA_Stops', prov.model.PROV_TYPE:'ont:DataSet'})
+        TS = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#MBTA',
+                        {prov.model.PROV_LABEL:'MBTA',
+                         prov.model.PROV_TYPE: 'ont:DataSet'})
         doc.wasAttributedTo(TS, this_script)
         doc.wasGeneratedBy(TS, get_TS, endTime)
         doc.wasDerivedFrom(TS, resource, get_TS, get_TS, get_TS)
@@ -81,10 +85,10 @@ class MBTA(dml.Algorithm):
         repo.logout()
 
         return doc
-
-MBTA.execute()
-doc = MBTA.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+#
+# MBTA.execute()
+# doc = MBTA.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof

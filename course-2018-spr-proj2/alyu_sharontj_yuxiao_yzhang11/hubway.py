@@ -107,9 +107,9 @@ class hubway(dml.Algorithm):
         return doc
 
 
-hubway.execute()
-doc = hubway.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+# hubway.execute()
+# doc = hubway.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof

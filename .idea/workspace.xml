@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c97f2cb9-7f4d-42cf-84b9-b473e20de784" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alice_bob/example.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alice_bob/example.py" />
       <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py" />
       <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Fire_Hospital_vs_Rent.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Fire_Hospital_vs_Rent.py" />
       <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/MBTA.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/MBTA.py" />
@@ -11,9 +12,13 @@
       <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education.py" />
       <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_rent.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_rent.py" />
       <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_trans_avg.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_trans_avg.py" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/fire.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/fire.py" />
       <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden.py" />
       <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py" />
       <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hospital.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hospital.py" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hubway.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hubway.py" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/rental.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/rental.py" />
+      <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/execute.py" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/execute.py" />
       <change beforePath="$PROJECT_DIR$/course-2018-spr-proj2/provenance.html" afterPath="$PROJECT_DIR$/course-2018-spr-proj2/provenance.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,137 +34,114 @@
     <SUITE FILE_PATH="coverage/CS591proj2$garden.coverage" NAME="garden Coverage Results" MODIFIED="1522618414900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5813953">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="garden.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="307">
-                  <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Fire_Hospital_vs_Rent.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Fire_Hospital_vs_Rent.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="580">
-                  <caret line="192" column="0" lean-forward="true" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="fire.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/fire.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="613">
-                  <caret line="112" column="48" lean-forward="false" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="education_trans_avg.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_trans_avg.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="376">
-                  <caret line="148" column="67" lean-forward="false" selection-start-line="148" selection-start-column="67" selection-end-line="148" selection-end-column="67" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="education_rent.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_rent.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="421">
-                  <caret line="130" column="63" lean-forward="false" selection-start-line="130" selection-start-column="63" selection-end-line="130" selection-end-column="63" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="education.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="434">
-                  <caret line="71" column="28" lean-forward="false" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="edu_trans_avg.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/edu_trans_avg.png">
-              <provider selected="true" editor-type-id="images">
-                <state />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Constraint_Solver.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="239">
-                  <caret line="118" column="30" lean-forward="true" selection-start-line="118" selection-start-column="30" selection-end-line="118" selection-end-column="30" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="correlation.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/correlation.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="335">
-                  <caret line="119" column="18" lean-forward="false" selection-start-line="119" selection-start-column="8" selection-end-line="119" selection-end-column="18" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="average_rent_zip.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/average_rent_zip.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="485">
-                  <caret line="82" column="62" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="62" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="Constraint_Solver.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-841">
-                  <caret line="130" column="69" lean-forward="false" selection-start-line="130" selection-start-column="69" selection-end-line="130" selection-end-column="69" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="garden_vs_rent.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="628">
+              <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fire.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/fire.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="628">
+              <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="education_trans_avg.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_trans_avg.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="613">
+              <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="education_rent.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_rent.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="628">
+              <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="education.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="628">
+              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="correlation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/correlation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constraint_Solver.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="268" column="23" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fire_Hospital_vs_Rent.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Fire_Hospital_vs_Rent.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="628">
+              <caret line="216" column="0" lean-forward="false" selection-start-line="216" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="average_rent_zip.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/average_rent_zip.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="13">
+              <caret line="54" column="18" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="garden.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="628">
+              <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -177,6 +159,7 @@
       <find>garden_vs_rent</find>
       <find>find</find>
       <find>logout</find>
+      <find>OS</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -193,20 +176,23 @@
         <option value="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/education_trans_avg.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py" />
+        <option value="$PROJECT_DIR$/course-2018-spr-proj2/alice_bob/example.py" />
+        <option value="$PROJECT_DIR$/course-2018-spr-proj2/execute.py" />
+        <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/average_rent_zip.py" />
+        <option value="$PROJECT_DIR$/../course-2018-spr-proj/alice_bob/example.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/rental.py" />
-        <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hubway.py" />
-        <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/fire.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/MBTA.py" />
+        <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hubway.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hospital.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Fire_Hospital_vs_Rent.py" />
+        <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/fire.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_trans_avg.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_rent.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education.py" />
-        <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py" />
-        <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/average_rent_zip.py" />
         <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/correlation.py" />
+        <option value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py" />
       </list>
     </option>
   </component>
@@ -289,7 +275,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.garden_vs_rent (1)">
+  <component name="RunManager" selected="Python.Constraint_Solver (1)">
     <configuration name="Constraint_Solver (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -347,6 +333,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="execute" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/course-2018-spr-proj2" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CS591proj2" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/course-2018-spr-proj2/execute.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="garden_vs_rent (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -361,25 +366,6 @@
       <module name="CS591proj2" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="garden_vs_rent" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CS591proj2" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -531,19 +517,19 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.garden_vs_rent" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Constraint_Solver" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Constraint_Solver (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.rental" />
-      <item index="4" class="java.lang.String" itemvalue="Python.garden_vs_rent (1)" />
+      <item index="0" class="java.lang.String" itemvalue="Python.Constraint_Solver" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Constraint_Solver (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.rental" />
+      <item index="3" class="java.lang.String" itemvalue="Python.garden_vs_rent (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.execute" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.garden_vs_rent (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.rental" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Constraint_Solver (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Constraint_Solver" />
-        <item index="4" class="java.lang.String" itemvalue="Python.garden_vs_rent" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Constraint_Solver (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.execute" />
+        <item index="2" class="java.lang.String" itemvalue="Python.garden_vs_rent (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.rental" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Constraint_Solver" />
       </list>
     </recent_temporary>
   </component>
@@ -567,23 +553,23 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14235377" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19802678" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09557109" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23076923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28321677" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3986014" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16783217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3986014" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -622,7 +608,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/zip_garden_score.py" />
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj1/alyu_sharontj_yuxiao_yzhang11/geosl_test.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -660,11 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_rent.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../course-2018-spr-proj/alyu_sharontj/TrafficMovement.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -699,14 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../course-2018-spr-proj/alice_bob/example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/prov/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -715,10 +687,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/edu_trans_avg.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/FireHospital_Rent.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_rent.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alice_bob/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="100" column="18" lean-forward="true" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/execute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-227">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="446">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../course-2018-spr-proj/alice_bob/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -728,68 +731,50 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alice_bob/example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-506">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/rental.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="97" column="44" lean-forward="false" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="628">
+          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/MBTA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="613">
+          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hubway.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="715">
-          <caret line="104" column="21" lean-forward="true" selection-start-line="104" selection-start-column="21" selection-end-line="104" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="628">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/hospital.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="71" column="28" lean-forward="false" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="628">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden_vs_rent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="90" column="67" lean-forward="false" selection-start-line="90" selection-start-column="67" selection-end-line="90" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="628">
+          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/garden.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+        <state relative-caret-position="628">
+          <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -798,8 +783,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Fire_Hospital_vs_Rent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="192" column="0" lean-forward="true" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+        <state relative-caret-position="628">
+          <caret line="216" column="0" lean-forward="false" selection-start-line="216" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -808,8 +793,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/fire.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="112" column="48" lean-forward="false" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
+        <state relative-caret-position="628">
+          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -818,61 +803,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_trans_avg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="148" column="67" lean-forward="false" selection-start-line="148" selection-start-column="67" selection-end-line="148" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="71" column="28" lean-forward="false" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/edu_trans_avg.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/average_rent_zip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="82" column="62" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="118" column="30" lean-forward="true" selection-start-line="118" selection-start-column="30" selection-end-line="118" selection-end-column="30" />
+        <state relative-caret-position="613">
+          <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education_rent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="130" column="63" lean-forward="false" selection-start-line="130" selection-start-column="63" selection-end-line="130" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="628">
+          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/education.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="628">
+          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/average_rent_zip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="54" column="18" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/correlation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="119" column="18" lean-forward="false" selection-start-line="119" selection-start-column="8" selection-end-line="119" selection-end-column="18" />
+        <state relative-caret-position="81">
+          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11/Constraint_Solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="268" column="23" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
           <folding />
         </state>
       </provider>

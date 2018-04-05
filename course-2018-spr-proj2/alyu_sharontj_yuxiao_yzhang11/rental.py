@@ -78,7 +78,8 @@ class rental(dml.Algorithm):
 
 
         this_script = doc.agent('alg:alyu_sharontj_yuxiao_yzhang11#rental',
-                                {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'], 'ont:Extension': 'py'})
+                                {prov.model.PROV_TYPE: prov.model.PROV['SoftwareAgent'],
+                                 'ont:Extension': 'py'})
 
         resource = doc.entity('bdp: boston_rentalPrice ',
                               {'prov:label': 'Boston renting', prov.model.PROV_TYPE: 'ont:DataResource',
@@ -107,9 +108,9 @@ class rental(dml.Algorithm):
         return doc
 
 
-rental.execute()
-doc = rental.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+# rental.execute()
+# doc = rental.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof

@@ -67,3 +67,5 @@ used = [(v['prov:activity'], v['prov:entity'], 'used') for v in prov_json['used'
 open('provenance.html', 'w').write(protoql.html("graph(" + str(entities + agents + activities) + ", " + str(wasAssociatedWith + wasAttributedTo + wasDerivedFrom + wasGeneratedBy + used) + ")"))
 
 ## eof
+
+

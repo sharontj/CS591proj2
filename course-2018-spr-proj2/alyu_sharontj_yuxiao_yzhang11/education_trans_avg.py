@@ -11,7 +11,9 @@ from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
 
 class education_trans_avg(dml.Algorithm):
     contributor = 'alyu_sharontj_yuxiao_yzhang11'
-    reads = ['alyu_sharontj_yuxiao_yzhang11.education', 'alyu_sharontj_yuxiao_yzhang11.hubway','alyu_sharontj_yuxiao_yzhang11.MBTA'] #read the data of roads and trafficsignals from mongo
+    reads = ['alyu_sharontj_yuxiao_yzhang11.education',
+             'alyu_sharontj_yuxiao_yzhang11.hubway',
+             'alyu_sharontj_yuxiao_yzhang11.MBTA'] #read the data of roads and trafficsignals from mongo
     writes = ['alyu_sharontj_yuxiao_yzhang11.education_trans_avg']
 
 
@@ -59,10 +61,10 @@ class education_trans_avg(dml.Algorithm):
         # print(hubwayinfo)
 
         edu_hub = [(s[0],s[1], h[0], distance(s[2], h[1])) for (s, h) in product(schoolinfo, hubwayinfo)]
-        print(len(edu_hub))
+        # print(len(edu_hub))
 
         edu_hub_1 = [ ((s,zip),dis) for (s,zip,h,dis) in edu_hub if dis<0.8]
-        print(len(edu_hub_1))
+        # print(len(edu_hub_1))
 
         edu_hub_count = aggregate(project(edu_hub_1, lambda t: (t[0],1)), sum)
 
@@ -80,13 +82,13 @@ class education_trans_avg(dml.Algorithm):
         # print(mbtainfo)
 
         edu_mbta = [(s[0], s[1], distance(s[2], h[1])) for (s, h) in product(schoolinfo, mbtainfo)]
-        print(len(edu_mbta))
+        # print(len(edu_mbta))
 
         edu_mbta_1 = [((s, zip), dis) for (s, zip, dis) in edu_mbta if dis < 0.8]
-        print(len(edu_mbta_1))
+        # print(len(edu_mbta_1))
 
         edu_mbta_count = aggregate(project(edu_mbta_1, lambda t: (t[0], 1)), sum)
-        print(edu_mbta_count)
+        # print(edu_mbta_count)
 
         select_edu_mbta_hub = select(product(edu_hub_count, edu_mbta_count), lambda t: t[0][0][0]==t[1][0][0])
         edu_hub_mbta = [(h[0][1], h[0][0], h[1]+m[1]) for (h,m) in select_edu_mbta_hub]
@@ -96,10 +98,10 @@ class education_trans_avg(dml.Algorithm):
         # print(zip_edu_trans)
 
         zip_edu_trans_count = aggregate(zip_edu_trans, ADD)
-        print(zip_edu_trans_count)
+        # print(zip_edu_trans_count)
 
         zip_edu_trans_avg = [(z, t[0], t[1]/t[0]) for (z,t)in zip_edu_trans_count]
-        print(zip_edu_trans_avg)
+        # print(zip_edu_trans_avg)
 
 
         repo.dropCollection("education_trans_avg")
@@ -150,7 +152,7 @@ class education_trans_avg(dml.Algorithm):
                                   {prov.model.PROV_LABEL: 'MBTA',
                                    prov.model.PROV_TYPE: 'ont:DataSet'})
 
-        this_run = doc.activity('log:a'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
+        this_run = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
 
         output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#education_trans_avg',
@@ -175,10 +177,10 @@ class education_trans_avg(dml.Algorithm):
 
 
 
-
-education_trans_avg.execute()
-doc = education_trans_avg.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+#
+# education_trans_avg.execute()
+# doc = education_trans_avg.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof

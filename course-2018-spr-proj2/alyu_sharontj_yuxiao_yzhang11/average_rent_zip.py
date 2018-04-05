@@ -72,13 +72,9 @@ class average_rent_zip(dml.Algorithm):
 
 
         resource = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#rental',
-                               {'prov:label': 'rental', prov.model.PROV_TYPE: 'ont:DataResource'})
+                               {'prov:label': 'rental', prov.model.PROV_TYPE: 'ont:DataSet'})
 
         this_run = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
-
-
-        doc.usage(this_run, resource, startTime, None,
-                  {prov.model.PROV_TYPE: 'ont:Retrieval', })
 
         output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#average_rent_zip',
                             {prov.model.PROV_LABEL: 'average_rent_zip', prov.model.PROV_TYPE: 'ont:DataSet'})

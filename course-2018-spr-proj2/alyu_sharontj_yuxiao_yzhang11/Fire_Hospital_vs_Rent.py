@@ -188,11 +188,12 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
                                    prov.model.PROV_TYPE:'ont:DataSet'})
 
 
-        this_run = doc.activity('log:a'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
+        this_run = doc.activity('log:uuid'+str(uuid.uuid4()), startTime, endTime)#, 'ont:Query':'?type=Animal+Found&$select=type,latitude,longitude,OPEN_DT'})
 
 
         output = doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#Fire_Hospital_vs_Rent',
-            { prov.model.PROV_LABEL:'Fire_Hospital_vs_Rent', prov.model.PROV_TYPE: 'ont:DataSet'})
+            { prov.model.PROV_LABEL:'Fire_Hospital_vs_Rent',
+              prov.model.PROV_TYPE: 'ont:DataSet'})
 
 
         doc.wasAssociatedWith(this_run, this_script)
@@ -213,9 +214,9 @@ class Fire_Hospital_vs_Rent(dml.Algorithm):
 
 
 
-Fire_Hospital_vs_Rent.execute()
-doc = Fire_Hospital_vs_Rent.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+# Fire_Hospital_vs_Rent.execute()
+# doc = Fire_Hospital_vs_Rent.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof

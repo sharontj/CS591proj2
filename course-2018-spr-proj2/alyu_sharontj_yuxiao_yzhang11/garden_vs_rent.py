@@ -96,7 +96,9 @@ class garden_vs_rent(dml.Algorithm):
 
 
 
-        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#garden_vs_rent', {prov.model.PROV_LABEL:'garden_vs_rent', prov.model.PROV_TYPE:'ont:DataSet'})
+        output =  doc.entity('dat:alyu_sharontj_yuxiao_yzhang11#garden_vs_rent',
+                             {prov.model.PROV_LABEL:'garden_vs_rent',
+                              prov.model.PROV_TYPE:'ont:DataSet'})
 
         # get_lost = doc.activity('log:uuid' + str(uuid.uuid4()), startTime, endTime)
         #
@@ -114,9 +116,9 @@ class garden_vs_rent(dml.Algorithm):
         return doc
 
 
-garden_vs_rent.execute()
-doc = garden_vs_rent.provenance()
-print(doc.get_provn())
-print(json.dumps(json.loads(doc.serialize()), indent=4))
+# garden_vs_rent.execute()
+# doc = garden_vs_rent.provenance()
+# print(doc.get_provn())
+# print(json.dumps(json.loads(doc.serialize()), indent=4))
 
 ## eof
