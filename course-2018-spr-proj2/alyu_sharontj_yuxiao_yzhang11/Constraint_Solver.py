@@ -1,4 +1,3 @@
-import z3
 import urllib.request
 import json
 import dml
@@ -19,6 +18,7 @@ class Constraint_Solver(dml.Algorithm):
              'alyu_sharontj_yuxiao_yzhang11.education',
              'alyu_sharontj_yuxiao_yzhang11.Fire_Hospital_vs_Rent',
              'alyu_sharontj_yuxiao_yzhang11.average_rent_zip',
+             'alyu_sharontj_yuxiao_yzhang11.education_trans_avg',
              'alyu_sharontj_yuxiao_yzhang11.correlation']
     writes = ['alyu_sharontj_yuxiao_yzhang11.Result']
 
@@ -113,6 +113,18 @@ class Constraint_Solver(dml.Algorithm):
             gardeninfo.append((zipcode,garden_count))
         gardendict = dict(gardeninfo)
 
+
+        '''get average number of transportation = (zipcode,trans_avg) from db.alyu_sharontj_yuxiao_yzhang11.education_trans_avg'''
+        transinfo = []
+        transdb = repo['alyu_sharontj_yuxiao_yzhang11.education_trans_avg']
+        transcur = transdb.find()
+        for info in transcur:
+            zipcode = info['zip']
+            trans_avg = info['trans_avg']
+            transinfo.append((zipcode,trans_avg))
+        transdict = dict(transinfo)
+
+
         '''find mean, std of each list'''
         def get_boundary(info):
             value_list=list(info.values())
@@ -172,8 +184,9 @@ class Constraint_Solver(dml.Algorithm):
             firescore = getscore(zipcode, firedict, 'fire/hospital_rent')
             # print('garden')
             gardenscore = getscore(zipcode, gardendict, 'garden_rent')
+            transscore = getscore(zipcode,transdict,'trans_rent')
 
-            score = rentscore + firescore + eduscore + gardenscore
+            score = rentscore + firescore + eduscore + gardenscore + transscore
 
             scorelist.append((zipcode, score))
 
