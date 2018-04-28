@@ -186,7 +186,6 @@ class Constraint_Solver(dml.Algorithm):
             gardenscore = getscore(zipcode, gardendict, 'garden_rent')
             transscore = getscore(zipcode,transdict,'trans_rent')
             score = rentscore + firescore + eduscore + gardenscore + transscore
-
             scorelist.append((zipcode, score))
 
         results = sorted(scorelist, key=lambda x: x[1], reverse=True)
