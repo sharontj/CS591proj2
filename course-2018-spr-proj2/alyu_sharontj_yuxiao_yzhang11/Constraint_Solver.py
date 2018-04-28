@@ -127,7 +127,7 @@ class Constraint_Solver(dml.Algorithm):
 
         '''find mean, std of each list'''
         def get_boundary(info):
-            value_list=list(info.values())
+            value_list = list(info.values())
             mean = stats.mean(value_list)
             # print(str(mean))
             std = stats.stdev(value_list)
@@ -185,18 +185,22 @@ class Constraint_Solver(dml.Algorithm):
             # print('garden')
             gardenscore = getscore(zipcode, gardendict, 'garden_rent')
             transscore = getscore(zipcode,transdict,'trans_rent')
-
             score = rentscore + firescore + eduscore + gardenscore + transscore
 
             scorelist.append((zipcode, score))
 
         results = sorted(scorelist, key=lambda x: x[1], reverse=True)
 
+
+        low,high = get_boundary(dict(results))
+
+
         repo.dropCollection("Result")
         repo.createCollection("Result")
 
         for k,v in results:
-            oneline = {'Zipcode': k, 'score': v}
+            normV = normalize(v,low,high) * 100
+            oneline = {'Zipcode': k, 'score': normV}
             print(oneline)
             repo['alyu_sharontj_yuxiao_yzhang11.Result'].insert_one(oneline)
 
