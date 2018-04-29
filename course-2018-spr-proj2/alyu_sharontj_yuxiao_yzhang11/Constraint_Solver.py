@@ -8,7 +8,7 @@ import csv
 import numpy
 import statistics as stats
 
-from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
+# from alyu_sharontj_yuxiao_yzhang11.Util.Util import *
 
 
 
@@ -32,35 +32,35 @@ class Constraint_Solver(dml.Algorithm):
         repo = client.repo
         repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
 
-        # def union(R, S):
-        #     return R + S
-        #
-        # def difference(R, S):
-        #     return [t for t in R if t not in S]
-        #
-        # def intersect(R, S):
-        #     return [t for t in R if t in S]
-        #
-        # def project(R, p):
-        #     return [p(t) for t in R]
-        #
-        # def select(R, s):
-        #     return [t for t in R if s(t)]
-        #
-        # def product(R, S):
-        #     return [(t, u) for t in R for u in S]
-        #
-        # def aggregate(R, f):
-        #     keys = {r[0] for r in R}
-        #     return [(key, f([v for (k, v) in R if k == key])) for key in keys]
-        #
-        # def map(f, R):
-        #     return [t for (k, v) in R for t in f(k, v)]
-        #
-        # def reduce(f, R):
-        #     keys = {k for (k, v) in R}
-        #     return [f(k1, [v for (k2, v) in R if k1 == k2]) for k1 in keys]
-        #
+        def union(R, S):
+            return R + S
+
+        def difference(R, S):
+            return [t for t in R if t not in S]
+
+        def intersect(R, S):
+            return [t for t in R if t in S]
+
+        def project(R, p):
+            return [p(t) for t in R]
+
+        def select(R, s):
+            return [t for t in R if s(t)]
+
+        def product(R, S):
+            return [(t, u) for t in R for u in S]
+
+        def aggregate(R, f):
+            keys = {r[0] for r in R}
+            return [(key, f([v for (k, v) in R if k == key])) for key in keys]
+
+        def map(f, R):
+            return [t for (k, v) in R for t in f(k, v)]
+
+        def reduce(f, R):
+            keys = {k for (k, v) in R}
+            return [f(k1, [v for (k2, v) in R if k1 == k2]) for k1 in keys]
+
 
         '''get rent = (zipcode,rent) from db.alyu_sharontj_yuxiao_yzhang11.average_rent_zip'''
 
@@ -110,7 +110,7 @@ class Constraint_Solver(dml.Algorithm):
             zipcode = info['Zip']
             garden_count = info['garden_count']
             # print(str(zipcode)+","+ str(garden_count))
-            gardeninfo.append((zipcode,garden_count))
+            gardeninfo.append((zipcode, garden_count))
         gardendict = dict(gardeninfo)
 
 
@@ -152,45 +152,59 @@ class Constraint_Solver(dml.Algorithm):
             weightinfo.append((factor,weight))
 
         weightinfo.append(('rent', 0.5))
-        weightdict = dict(weightinfo)
-        # print (gardendict)
 
+        weights = []
+        weight_rent = dict(weightinfo)
+        weight_edu = {"edu_rent": 0.4, "rent": 0.22, "fire/hospital_rent": 0.18, "trans_rent":0.12, "garden_rent": 0.08}
+        weight__safty = {"fire/hospital_rent": 0.4, "rent": 0.22, "edu_rent": 0.18, "trans_rent":0.12, "garden_rent": 0.08}
+        weight_trans = {"trans_rent": 0.4, "rent": 0.22, "edu_rent": 0.18, "fire/hospital_rent":0.12, "garden_rent": 0.08}
+        weight_facility = {"garden_rent": 0.4, "rent": 0.22, "edu_rent": 0.18, "fire/hospital_rent":0.12, "trans_rent": 0.08}
+        weights.append(weight_rent)
+        weights.append(weight_edu)
+        weights.append(weight__safty)
+        weights.append(weight_trans)
+        weights.append(weight_facility)
+        # print(weights)
 
-        weight_rent = {"rent": 0.4, "edu_rent": 0.3, "fire/hospital_rent": 0.2, "trans_rent":0.12, "garden_rent": 0.08}
 
 
         def normalize(value, low, high):
             return float((value-low)/(high-low))
 
-        def getscore(z, dict,factor):
+        def getscore(z, dict, factor, weightlist):
             if(z in dict.keys()):
                 low,high = get_boundary(dict)
                 if(dict[z] <= high and  dict[z] >= low):
                     # print("original"+str(dict[z]))
-                    n = normalize(dict[z], low,high) * 100
+                    n = normalize(dict[z], low, high) * 100
                     # print("normal"+str(n))
-                    score2 = n*weightdict[factor]
+                    score2 = n * weightlist[factor]
                 else:
                     score2 = 0
             else:
                 score2 = 0
             return score2
 
-        for zipcode in zipcode_list:
-            # print('rent')
-            rentscore = getscore(zipcode, rentdict, 'rent')
-            # print('edu')
-            eduscore = getscore(zipcode, edudict, 'edu_rent')
-            # print('fire')
-            firescore = getscore(zipcode, firedict, 'fire/hospital_rent')
-            # print('garden')
-            gardenscore = getscore(zipcode, gardendict, 'garden_rent')
-            transscore = getscore(zipcode,transdict,'trans_rent')
-            score = rentscore + firescore + eduscore + gardenscore + transscore
-            scorelist.append((zipcode, score))
+        results = []
+        for weightlist in weights:
+            print("weightlist" + str(weightlist))
+            for zipcode in zipcode_list:
+                # print('rent')
+                rentscore = getscore(zipcode, rentdict, 'rent', weightlist)
+                # print('edu')
+                eduscore = getscore(zipcode, edudict, 'edu_rent', weightlist)
+                # print('fire')
+                firescore = getscore(zipcode, firedict, 'fire/hospital_rent', weightlist)
+                # print('garden')
+                gardenscore = getscore(zipcode, gardendict, 'garden_rent', weightlist)
 
-        results = sorted(scorelist, key=lambda x: x[1], reverse=True)
+                transscore = getscore(zipcode, transdict, 'trans_rent', weightlist)
 
+                score = rentscore + firescore + eduscore + gardenscore + transscore
+                scorelist.append((zipcode, score))
+            results.append(scorelist)
+        # results = sorted(scorelist, key=lambda x: x[1], reverse=True)
+        print(results)
 
         low,high = get_boundary(dict(results))
 
@@ -288,4 +302,4 @@ class Constraint_Solver(dml.Algorithm):
 # print(doc.get_provn())
 # print(json.dumps(json.loads(doc.serialize()), indent=4))
 
-## eof
+# eof
