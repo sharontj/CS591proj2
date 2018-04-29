@@ -7,7 +7,8 @@ print (folium.__version__)
 from branca.colormap import linear
 import dml
 
-def Mapping(score):
+def Mapping(key):
+
     client = dml.pymongo.MongoClient()
     repo = client.repo
     repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
@@ -17,7 +18,7 @@ def Mapping(score):
     result = []
     for info in dbresults:
         zipcode = info['Zipcode']
-        score = info[score]
+        score = info[key]
         result.append((zipcode, score))
 
     print(result)

@@ -1,7 +1,11 @@
 import flask
 from flask import Flask, Response, request, render_template, redirect, url_for
 from flask_pymongo import PyMongo
-from alyu_sharontj_yuxiao_yzhang11.Mapping import *
+##from alyu_sharontj_yuxiao_yzhang11.Mapping import *
+
+import sys
+sys.path.append("Users/Forrest/Desktop/CS591proj2/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11")
+from mapping import Mapping #scriptName without .py extension
 
 
 import json
@@ -27,9 +31,27 @@ def welcome():
 @app.route('/generate')
 def renderMap():
 
-    Mapping()
+    Mapping("score")
 
     return render_template('generate.html')
+
+@app.route("/choose",methods=['GET'])
+def choose():
+
+    return render_template('choose.html')
+
+@app.route("/made_choice", methods = ["GET", "POST"] )
+def made_choose():
+    formData = request.values if request.method == "GET" else request.values
+    #print(formData)
+   # print(type(formData))
+    choice = [item for item in formData.items()][0][1]
+
+    #print("choice is ", choice, type(choice))
+    Mapping(choice)
+    return render_template('generate.html')
+
+
 
 
 
