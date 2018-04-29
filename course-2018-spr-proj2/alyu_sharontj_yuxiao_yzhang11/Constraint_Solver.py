@@ -156,7 +156,8 @@ class Constraint_Solver(dml.Algorithm):
         # print (gardendict)
 
 
-        # weight = {"rent": 0.5, "edu": 0.3, "fire": 0.1, "garden": 0.1}
+        weight_rent = {"rent": 0.4, "edu_rent": 0.3, "fire/hospital_rent": 0.2, "trans_rent":0.12, "garden_rent": 0.08}
+
 
         def normalize(value, low, high):
             return float((value-low)/(high-low))
