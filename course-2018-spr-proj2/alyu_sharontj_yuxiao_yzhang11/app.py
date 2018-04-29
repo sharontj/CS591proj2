@@ -2,7 +2,7 @@ import flask
 from flask import Flask, Response, request, render_template, redirect, url_for
 from flask_pymongo import PyMongo
 
-from alyu_sharontj_yuxiao_yzhang11.mapping import Mapping #scriptName without .py extension
+from alyu_sharontj_yuxiao_yzhang11.mapping import Mapping
 
 
 

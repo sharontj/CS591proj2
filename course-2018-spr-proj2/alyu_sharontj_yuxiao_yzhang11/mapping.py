@@ -52,7 +52,7 @@ def Mapping(key):
     geo_json_data = json.load(open('ZIP_Codes.geojson'))
 
     if key == 'rent':
-        colormap = linear.YlOrRd.scale(
+        colormap = linear.GnBu.scale(
             sortresult[-1][1],
             sortresult[0][1]
         )
@@ -72,7 +72,7 @@ def Mapping(key):
             sortresult[0][1]
         )
     else :
-        colormap = linear.GnBu.scale(
+        colormap = linear.YlOrRd.scale(
             sortresult[-1][1],
             sortresult[0][1]
         )
