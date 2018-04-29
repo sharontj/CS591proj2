@@ -2,18 +2,12 @@ import flask
 from flask import Flask, Response, request, render_template, redirect, url_for
 from flask_pymongo import PyMongo
 
-import sys
-sys.path.append("Users/sharontj1/Desktop/CS591proj2/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11")
-from mapping import Mapping #scriptName without .py extension
-
-import sys
-sys.path.append("/Users/sharontj1/Desktop/CS591proj2/course-2018-spr-proj2/alyu_sharontj_yuxiao_yzhang11")
-# from mapping import Mapping
+from alyu_sharontj_yuxiao_yzhang11.mapping import Mapping #scriptName without .py extension
 
 
 
 import json
-# import sys
+import sys
 sys.path.append('..')
 import folium
 print (folium.__file__)
