@@ -6,34 +6,76 @@ print (folium.__file__)
 print (folium.__version__)
 from branca.colormap import linear
 import dml
+import statistics as stats
 
-def Mapping(score):
+def get_boundary(info):
+        value_list = list(info.values())
+        mean = stats.mean(value_list)
+        # print(str(mean))
+        std = stats.stdev(value_list)
+        # print(str(std))
+        low = mean-3*std
+        high = mean + 3*std
+        return low, high
+
+def normalize(value, low, high):
+    return float((value-low)/(high-low))
+
+def Mapping(key):
     client = dml.pymongo.MongoClient()
     repo = client.repo
     repo.authenticate('alyu_sharontj_yuxiao_yzhang11', 'alyu_sharontj_yuxiao_yzhang11')
     dbresults = repo['alyu_sharontj_yuxiao_yzhang11.Result'].find()
 
 
+
     result = []
+
     for info in dbresults:
         zipcode = info['Zipcode']
-        score = info[score]
+        score = info[key]
         result.append((zipcode, score))
 
-    print(result)
+    low, high = get_boundary(dict(result))
+    normresult = []
+    for k,v in result:
+        normV = normalize(v,low, high) * 100
+        normresult.append((k,normV))
 
-    dictR = dict(result)
-    print(dictR['02215'])
+
+    sortresult = sorted(normresult, key=lambda x: x[1], reverse=True)
+    dictR = dict(sortresult)
+    # print(dictR['02215'])
 
 
     # import geo json data
     geo_json_data = json.load(open('ZIP_Codes.geojson'))
 
-
-    colormap = linear.YlOrRd.scale(
-        result[-1][1],
-        result[0][1]
-    )
+    if key == 'rent':
+        colormap = linear.YlOrRd.scale(
+            sortresult[-1][1],
+            sortresult[0][1]
+        )
+    elif key == 'transportation':
+        colormap = linear.YlGn.scale(
+            sortresult[-1][1],
+            sortresult[0][1]
+        )
+    elif key == 'safety':
+        colormap = linear.PuRd.scale(
+            sortresult[-1][1],
+            sortresult[0][1]
+        )
+    elif key == 'facility':
+        colormap = linear.BuPu.scale(
+            sortresult[-1][1],
+            sortresult[0][1]
+        )
+    else :
+        colormap = linear.GnBu.scale(
+            sortresult[-1][1],
+            sortresult[0][1]
+        )
 
 
     # create map, center it on Boston
@@ -60,3 +102,5 @@ def Mapping(score):
 
 
 
+if __name__ == "__main__":
+    Mapping("facility")
