@@ -102,5 +102,5 @@ def Mapping(key):
 
 
 
-# if __name__ == "__main__":
-#     Mapping("facility")
+if __name__ == "__main__":
+    Mapping("rent")
