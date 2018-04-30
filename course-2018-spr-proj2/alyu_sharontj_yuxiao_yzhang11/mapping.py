@@ -45,7 +45,7 @@ def Mapping(key):
 
     sortresult = sorted(normresult, key=lambda x: x[1], reverse=True)
     dictR = dict(sortresult)
-    # print(dictR['02215'])
+    print(dictR)
 
 
     # import geo json data
