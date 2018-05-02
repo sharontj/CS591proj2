@@ -136,6 +136,8 @@ Figure 1.2 Number of Fire/ Hospital Rate vs Average Rent in certain area
 ​		
 Figure 1.3 Number of Public Transportation Stops vs Number of Schools in Certain Area
 
+
+
 ## Scoring
 
 We calculate the score of each zipcode in order to get the top5 choices to invest.
@@ -145,6 +147,8 @@ We calculate the score of each zipcode in order to get the top5 choices to inves
 
 
 ![define](picture/define.png)
+
+
 
 #### Second, we calculate the correlation coefficients and corresponding weights:
 
@@ -161,6 +165,8 @@ we calculate the correlation coefficient and corresponding weight for the four m
 
 
 
+
+
 #### Third,we calculate the final score for each zip code by the  formula
 
 ![scoreformula](picture/scoreformula.png)
@@ -169,11 +175,15 @@ we calculate the correlation coefficient and corresponding weight for the four m
 
 Then we get the score table as follows:
 
+
+
 #####                                       						   Scores Table
 
 ![scoretable](picture/scoretable.jpeg)
 
-#### Conclusion: We claimed that the top 3 areas in Boston to invest are 02116, 02115 and 02215.
+
+
+#### **Conclusion: We claimed that the top 3 areas in Boston to invest are 02116, 02115 and 02215.**
 
 
 
@@ -187,19 +197,29 @@ The map visualization is the shown in Figure 2.0, which views rent as the most i
 
 ![rent-heatmap](picture/rent-heatmap.png)
 
+
+
 #### Website
 
 Here's the **welcome page** of our website with the introduction of our project. It also display the recommend investment that view rent price as the most important factor of investment. 
 
+
+
 ![welcomepage](picture/welcomepage.png)
 
+
+
 Besides our recommendation, users can also **make their own choice** to decide which factor they care most with respect to investment.
+
+
 
 ![choosepage](picture/choosepage.png)
 
 
 
 For example, if the user choose **facility**, then the result will be as follows.
+
+
 
 ![facility-Heatmap](picture/facility-Heatmap.png)
 
@@ -208,6 +228,8 @@ For example, if the user choose **facility**, then the result will be as follows
 # Limitation and Future Work
 
 There were many limitations and things we could improve in this project. Looking for a useful dataset is the biggest limitation we had. We take 5 factors in our consideration because these datasets were accessible. Even though we found a dataset, some of the data are not in good quality. For example, in the average rent price dataset from Zillow, there are many blanks in certain zip codes. To fill up the blank, our team calculated the average rent price in Boston and used the rent to run the tests. In the future, we should take more factors into our calculation.
+
+
 
 # To Run this Project
 
